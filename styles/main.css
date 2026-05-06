@@ -1039,29 +1039,29 @@ p { margin: 0 0 1em; }
 }
 
 /* ============================================================
-   AI-ERA STUDIO SECTION (sits directly under hero, cream paper)
+   AI-ERA STUDIO SECTION (gold panel)
    ============================================================ */
 
 .section-formula {
   position: relative;
-  background:
-    radial-gradient(900px 460px at 50% -10%, rgba(0,56,49,.08), transparent 65%),
-    var(--cream);
+  background: var(--gold-500);
   color: var(--green-900);
   padding: clamp(56px, 8vw, 110px) 0 clamp(72px, 10vw, 130px);
-  border-top: 1px solid rgba(0,56,49,.12);
+  border-top: 3px solid var(--green-900);
+  border-bottom: 3px solid var(--green-900);
   text-align: center;
   overflow: hidden;
 }
 .section-formula::before {
-  /* Subtle scoreboard dot pattern fading from the top */
+  /* Pinstripe pattern at top — subtle differentiation from the gold ticker */
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 60px;
   background:
-    radial-gradient(circle at center, rgba(0,56,49,.20) 1px, transparent 2px) 0 0 / 18px 18px;
-  opacity: .35;
+    repeating-linear-gradient(135deg,
+      rgba(0,56,49,.06) 0 6px,
+      transparent 6px 12px);
   pointer-events: none;
   mask: linear-gradient(180deg, #000, transparent);
   -webkit-mask: linear-gradient(180deg, #000, transparent);
@@ -1072,12 +1072,12 @@ p { margin: 0 0 1em; }
   font-family: 'Press Start 2P', monospace;
   font-size: .58rem;
   letter-spacing: .25em;
-  color: var(--green-900);
+  color: var(--gold-500);
   margin-bottom: 16px;
   padding: 6px 12px;
-  border: 1px solid var(--green-700);
+  border: 2px solid var(--green-900);
   border-radius: 999px;
-  background: rgba(0,56,49,.05);
+  background: var(--green-900);
 }
 
 .formula-h2 {
@@ -1089,17 +1089,22 @@ p { margin: 0 0 1em; }
   margin: 0 0 16px;
   letter-spacing: -.005em;
 }
-.formula-h2 .gold { color: var(--gold-600); }
+.formula-h2 .gold {
+  color: var(--green-900);
+  border-bottom: 4px solid var(--green-900);
+  padding-bottom: 2px;
+}
 
 .formula-lead {
   max-width: 62ch;
   margin: 0 auto 56px;
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(.95rem, 1.4vw, 1.1rem);
   line-height: 1.6;
-  color: var(--green-700);
+  color: var(--green-900);
 }
+.formula-lead strong { color: var(--green-900); font-weight: 700; }
 
 /* ============================================================
    OBP EQUATION (Tech + Operator + Distribution + Capital = OBP)
@@ -1120,11 +1125,11 @@ p { margin: 0 0 1em; }
   min-width: 150px;
   max-width: 220px;
   background: var(--green-900);
-  border: 3px solid var(--gold-500);
+  border: 3px solid var(--green-900);
   padding: 22px 14px;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 6px;
-  box-shadow: 6px 6px 0 rgba(0,0,0,.4);
+  box-shadow: 6px 6px 0 var(--green-900);
   transition: transform .15s ease;
 }
 .obp-term:hover { transform: translate(-2px,-2px); }
@@ -1166,7 +1171,7 @@ p { margin: 0 0 1em; }
 }
 
 .obp-result {
-  background: var(--gold-500);
+  background: var(--cream);
   border-color: var(--green-900);
   color: var(--green-900);
   box-shadow: 6px 6px 0 var(--green-900);
@@ -1362,6 +1367,10 @@ p { margin: 0 0 1em; }
 .card.dark h3 { color: var(--white); }
 .card.dark p { color: var(--cream); }
 .card.dark .num-tag { color: var(--gold-500); }
+
+/* When the dark card sits on a gold panel (AI-Era), swap its
+   border to dark green so it doesn't disappear into the bg. */
+.section-formula .card.dark { border-color: var(--green-900); }
 
 /* ============================================================
    "VS" comparison block
