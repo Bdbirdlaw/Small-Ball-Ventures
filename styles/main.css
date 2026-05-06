@@ -1177,16 +1177,20 @@ p { margin: 0 0 1em; }
 
 .obp-result {
   position: relative;
-  background: var(--gold-500);
-  border-color: var(--green-900);
+  background:
+    linear-gradient(135deg,
+      #F5D26C 0%,
+      var(--gold-500) 45%,
+      #E0A30E 100%);
+  border: 4px solid var(--green-900);
   color: var(--green-900);
   box-shadow:
     6px 6px 0 var(--green-900),
     0 0 0 0 rgba(239,178,30,.55);
-  flex: 0 0 180px;
-  min-width: 160px;
-  max-width: 200px;
-  padding: 18px 14px;
+  flex: 0 0 200px;
+  min-width: 180px;
+  max-width: 220px;
+  padding: 22px 16px;
   align-self: center;
   animation: obp-result-pulse 2.6s ease-in-out infinite;
   overflow: visible;
@@ -1200,27 +1204,43 @@ p { margin: 0 0 1em; }
       0 0 0 0 rgba(239,178,30,.55);
   }
   50% {
-    transform: translateY(-3px) scale(1.03);
+    transform: translateY(-3px) scale(1.04);
     box-shadow:
       6px 6px 0 var(--green-900),
-      0 0 30px 8px rgba(239,178,30,.55);
+      0 0 44px 10px rgba(239,178,30,.55);
   }
+}
+
+/* Outward "radar ping" ring that emanates from the tile every 2s */
+.obp-result::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 3px solid var(--gold-500);
+  animation: obp-ping 2.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes obp-ping {
+  0%   { transform: scale(1);    opacity: .8; }
+  60%  { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
 }
 
 /* Twinkling star accent in the top-right corner */
 .obp-result::after {
   content: "★";
   position: absolute;
-  top: -14px;
-  right: -10px;
+  top: -16px;
+  right: -12px;
   font-family: 'Press Start 2P', monospace;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--gold-500);
   text-shadow:
-    0 0 8px rgba(239,178,30,.9),
-    0 0 18px rgba(239,178,30,.5);
+    0 0 10px rgba(239,178,30,.95),
+    0 0 22px rgba(239,178,30,.55);
   animation: obp-star-twinkle 1.8s ease-in-out infinite;
   pointer-events: none;
+  z-index: 2;
 }
 
 @keyframes obp-star-twinkle {
@@ -1230,13 +1250,15 @@ p { margin: 0 0 1em; }
   65%      { transform: rotate(360deg) scale(1.3); opacity: 1; }
 }
 
-/* "Punchline" emphasis on the stacked HIGH / OBP label itself */
+/* "Punchline" label sized larger and weighted heavier */
 .obp-result .obp-result-label {
-  font-size: 1.85rem;
+  font-size: 2.2rem;
   letter-spacing: .06em;
   font-weight: 400;
   color: var(--green-900);
-  text-shadow: 1px 1px 0 rgba(0,0,0,.08);
+  text-shadow: 1px 1px 0 rgba(255,255,255,.25);
+  position: relative;
+  z-index: 1;
 }
 .obp-result .obp-result-label {
   font-family: 'Bebas Neue', 'Oswald', sans-serif;
