@@ -1033,6 +1033,69 @@ p { margin: 0 0 1em; }
 }
 
 /* ============================================================
+   AI-ERA STUDIO SECTION (sits directly under hero, cohesive)
+   ============================================================ */
+
+.section-formula {
+  position: relative;
+  background:
+    radial-gradient(900px 460px at 50% -10%, rgba(239,178,30,.10), transparent 65%),
+    linear-gradient(180deg, #024131 0%, var(--green-800) 65%, var(--green-900) 100%);
+  color: var(--cream);
+  padding: clamp(56px, 8vw, 110px) 0 clamp(72px, 10vw, 130px);
+  border-top: 1px solid rgba(239,178,30,.18);
+  text-align: center;
+  overflow: hidden;
+}
+.section-formula::before {
+  /* Subtle scoreboard dot pattern on the very top edge to echo hero */
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background:
+    radial-gradient(circle at center, rgba(239,178,30,.18) 1px, transparent 2px) 0 0 / 18px 18px;
+  opacity: .35;
+  pointer-events: none;
+  mask: linear-gradient(180deg, #000, transparent);
+  -webkit-mask: linear-gradient(180deg, #000, transparent);
+}
+
+.formula-eyebrow {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .58rem;
+  letter-spacing: .25em;
+  color: var(--gold-500);
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  border: 1px solid rgba(239,178,30,.45);
+  border-radius: 999px;
+  background: rgba(0,30,22,.5);
+}
+
+.formula-h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--white);
+  margin: 0 0 16px;
+  letter-spacing: -.005em;
+}
+.formula-h2 .gold { color: var(--gold-500); }
+
+.formula-lead {
+  max-width: 62ch;
+  margin: 0 auto 56px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(.95rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(245,230,200,.78);
+}
+
+/* ============================================================
    OBP EQUATION (Tech + Operator + Distribution + Capital = OBP)
    ============================================================ */
 
