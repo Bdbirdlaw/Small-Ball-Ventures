@@ -2009,39 +2009,38 @@ p { margin: 0 0 1em; }
 }
 .player-body p { font-size: .95rem; color: #2A2F2B; }
 
-/* Expanded team-grid reveal */
-.team-grid-extended {
-  margin-top: 28px;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity .3s ease, max-height .5s ease;
-}
-.team-grid-extended[hidden] { display: none; }
-.team-grid-extended.is-open {
-  opacity: 1;
-  max-height: 4000px; /* large enough for 6 cards */
-  overflow: visible;
+/* Team org tiers (Managing Partner / Operations / Advisors) */
+.team-tier { margin-top: 56px; }
+.team-tier:first-of-type { margin-top: 0; }
+.team-tier-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .65rem;
+  letter-spacing: .25em;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  border-bottom: 2px dashed rgba(239,178,30,.3);
 }
 
-.team-expand-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin-top: 36px;
+/* Single-card variant — centers the lone Managing Partner card */
+.team-grid--single {
+  grid-template-columns: minmax(280px, 420px);
+  justify-content: center;
 }
-.team-expand-btn {
-  cursor: pointer;
-  font-family: var(--font-pixel);
-}
-.team-expand-hint {
-  margin: 0;
+
+.team-recruit-hint {
+  margin: 56px 0 0;
+  text-align: center;
   color: var(--cream);
   font-family: var(--font-mono);
   font-size: 1.05rem;
   opacity: .85;
-  text-align: center;
+}
+.team-recruit-hint a {
+  color: var(--gold-500);
+  text-decoration: underline;
 }
 
 /* ============================================================
