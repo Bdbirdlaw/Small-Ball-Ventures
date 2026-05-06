@@ -709,6 +709,104 @@ p { margin: 0 0 1em; }
   .ambient-balls .ball { width: 9px; height: 9px; }
 }
 
+/* ============================================================
+   OPPORTUNITY SECTION
+   ============================================================ */
+
+.opp-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 56px;
+}
+@media (max-width: 760px) { .opp-stats { grid-template-columns: 1fr; } }
+
+.opp-stat {
+  background: var(--green-900);
+  border: 3px solid var(--gold-500);
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: 8px 8px 0 rgba(0,0,0,.35);
+  position: relative;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.opp-stat:hover { transform: translate(-3px,-3px); box-shadow: 11px 11px 0 rgba(0,0,0,.45); }
+.opp-stat.featured {
+  background: var(--gold-500);
+  border-color: var(--green-900);
+}
+.opp-stat.featured .opp-num { color: var(--green-900); text-shadow: none; }
+.opp-stat.featured .opp-label { color: var(--green-900); }
+.opp-stat.featured .opp-label em { color: var(--green-700); }
+
+.opp-num {
+  display: block;
+  font-family: 'Bebas Neue', 'Oswald', Impact, sans-serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 1;
+  color: var(--gold-500);
+  text-shadow: 0 0 18px rgba(239,178,30,.5);
+  letter-spacing: .02em;
+  margin-bottom: 10px;
+}
+.opp-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--cream);
+  letter-spacing: .03em;
+}
+.opp-label em {
+  display: inline-block;
+  font-style: normal;
+  font-family: var(--font-pixel);
+  font-size: .55rem;
+  letter-spacing: .15em;
+  color: var(--gold-500);
+  margin-top: 6px;
+}
+
+.opp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 48px;
+  max-width: 780px;
+  display: grid;
+  gap: 14px;
+}
+.opp-bullets li {
+  position: relative;
+  padding: 16px 18px 16px 56px;
+  background: rgba(0,30,22,.5);
+  border-left: 3px solid var(--gold-500);
+  color: var(--cream);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.opp-bullets li::before {
+  content: "★";
+  position: absolute;
+  left: 22px;
+  top: 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .75rem;
+  color: var(--gold-500);
+}
+.opp-bullets li strong { color: var(--white); }
+
+.opp-quote {
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 32px;
+  border-top: 2px dashed rgba(239,178,30,.3);
+}
+.opp-quote .pull-quote {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  margin: 0 auto;
+  max-width: 36ch;
+}
+
 .hero h1 {
   font-family: var(--font-serif);
   color: var(--white);
