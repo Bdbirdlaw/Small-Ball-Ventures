@@ -550,28 +550,34 @@ p { margin: 0 0 1em; }
   50%     { opacity: .55; }
 }
 
-/* ----- Headline — clean white Bebas Neue, gold blinking MONEYBALL ----- */
+/* ----- Headline — 8-bit pixel face matching the logo ----- */
 .hero-h1 {
-  font-family: 'Bebas Neue', 'Oswald', 'Anton', Impact, sans-serif;
+  font-family: 'Press Start 2P', 'Jersey 10', 'VT323', monospace;
   font-weight: 400;
-  font-size: clamp(3.2rem, 9vw, 7rem);
-  line-height: .95;
-  margin: 0 0 22px;
+  font-size: clamp(1.4rem, 3.6vw, 2.8rem);
+  line-height: 1.45;
+  margin: 0 0 30px;
   color: #FFFFFF;
-  letter-spacing: .015em;
+  letter-spacing: .02em;
   text-transform: uppercase;
+  /* Crisp pixel rendering */
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  text-rendering: geometricPrecision;
 }
 .hero-h1 .line-1,
 .hero-h1 .line-2 {
   display: block;
   color: #FFFFFF;
+  text-shadow: 0 3px 0 rgba(0,0,0,.35);
 }
 .hero-h1 .gold {
   color: var(--gold-500);
   animation: gold-blink 1.6s ease-in-out infinite;
   text-shadow:
-    0 0 18px rgba(239,178,30,.55),
-    0 0 38px rgba(239,178,30,.25);
+    0 3px 0 rgba(0,0,0,.4),
+    0 0 14px rgba(239,178,30,.5),
+    0 0 32px rgba(239,178,30,.22);
 }
 @keyframes gold-blink {
   0%, 45%, 100% { opacity: 1; }
@@ -588,18 +594,19 @@ p { margin: 0 0 1em; }
 .hero-h1 .underline-gold {
   position: relative;
   display: inline-block;
-  color: var(--cream);
+  color: #FFFFFF;
 }
 .hero-h1 .underline-gold::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -.04em;
-  height: 4px;
+  left: 0; right: 0; bottom: -.18em;
+  height: 6px;
   background: var(--gold-500);
-  opacity: .85;
-  box-shadow: 0 0 10px rgba(239,178,30,.45);
+  box-shadow: 0 0 8px rgba(239,178,30,.4);
   animation: underline-grow 1.6s ease-out .3s both;
   transform-origin: left;
+  /* keep edge crisp/pixel-like */
+  image-rendering: pixelated;
 }
 @keyframes underline-grow {
   from { transform: scaleX(0); }
