@@ -1953,7 +1953,7 @@ p { margin: 0 0 1em; }
   background:
     radial-gradient(160px 100px at 50% 100%, rgba(0,0,0,.25), transparent 70%),
     repeating-linear-gradient(90deg, var(--green-600) 0 18px, var(--green-500) 18px 36px);
-  height: 220px;
+  height: 190px;
   display: flex; align-items: flex-end; justify-content: center;
   position: relative;
   overflow: hidden;
