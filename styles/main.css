@@ -568,21 +568,45 @@ p { margin: 0 0 1em; }
 .hero-h1 {
   font-family: 'Bebas Neue', 'Oswald', 'Anton', Impact, sans-serif;
   font-weight: 400;
-  font-size: clamp(3.2rem, 9vw, 7rem);
+  font-size: clamp(3.4rem, 10vw, 7.5rem);
   line-height: .92;
   margin: 0 0 22px;
   color: var(--white);
   letter-spacing: .015em;
   text-transform: uppercase;
 }
+
+/* Stadium scoreboard "dot-matrix" rendering for headline letters.
+   Each <span> in the headline gets a radial-gradient of glowing dots
+   masked to the shape of the letters via background-clip: text. */
 .hero-h1 .line-1,
-.hero-h1 .line-2 { display: block; }
+.hero-h1 .line-2,
+.hero-h1 .gold,
+.hero-h1 .underline-gold {
+  background-image:
+    radial-gradient(circle at center, currentColor 38%, transparent 42%);
+  background-size: 7px 7px;
+  background-position: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--cream);
+  filter:
+    drop-shadow(0 0 4px rgba(255,250,230,.6))
+    drop-shadow(0 0 14px rgba(255,250,230,.25));
+}
 .hero-h1 .gold {
   color: var(--gold-500);
-  text-shadow:
-    0 0 24px rgba(239,178,30,.45),
-    3px 3px 0 var(--green-900);
+  filter:
+    drop-shadow(0 0 4px rgba(239,178,30,.85))
+    drop-shadow(0 0 16px rgba(239,178,30,.5))
+    drop-shadow(0 0 36px rgba(239,178,30,.25));
 }
+.hero-h1 .line-1,
+.hero-h1 .line-2 { display: block; }
+
+/* Underline kept gold but solid (the whole word is dotted, this is the
+   bar beneath it). Tone it down a little so the dots stay the star. */
 .hero-h1 .underline-gold {
   position: relative;
   display: inline-block;
@@ -591,11 +615,13 @@ p { margin: 0 0 1em; }
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: -.05em;
-  height: 6px;
+  height: 5px;
   background: var(--gold-500);
   box-shadow: 0 0 14px rgba(239,178,30,.7);
   animation: underline-grow 1.4s ease-out .3s both;
   transform-origin: left;
+  -webkit-text-fill-color: initial;
+  filter: none;
 }
 @keyframes underline-grow {
   from { transform: scaleX(0); }
@@ -806,6 +832,192 @@ p { margin: 0 0 1em; }
   margin: 0 auto;
   max-width: 36ch;
 }
+
+/* ============================================================
+   OBP EQUATION (Tech + Operator + Distribution + Capital = OBP)
+   ============================================================ */
+
+.obp-equation {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.obp-term,
+.obp-result {
+  flex: 1 1 160px;
+  min-width: 150px;
+  max-width: 220px;
+  background: var(--green-900);
+  border: 3px solid var(--gold-500);
+  padding: 22px 14px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  box-shadow: 6px 6px 0 rgba(0,0,0,.4);
+  transition: transform .15s ease;
+}
+.obp-term:hover { transform: translate(-2px,-2px); }
+.obp-icon {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.4rem;
+  color: var(--gold-500);
+  margin-bottom: 4px;
+  text-shadow: 0 0 10px rgba(239,178,30,.5);
+}
+.obp-term-label {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: .04em;
+  color: var(--white);
+  line-height: 1;
+}
+.obp-term-sub {
+  font-family: var(--font-mono);
+  font-size: .95rem;
+  line-height: 1.25;
+  color: var(--cream);
+  opacity: .8;
+  letter-spacing: .02em;
+}
+
+.obp-op,
+.obp-equals {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: 2.4rem;
+  color: var(--gold-500);
+  align-self: center;
+  padding: 0 4px;
+  text-shadow: 0 0 12px rgba(239,178,30,.6);
+}
+.obp-equals {
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255,255,255,.4);
+}
+
+.obp-result {
+  background: var(--gold-500);
+  border-color: var(--green-900);
+  color: var(--green-900);
+  box-shadow: 6px 6px 0 var(--green-900);
+}
+.obp-result .obp-result-label {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: 2.6rem;
+  letter-spacing: .05em;
+  color: var(--green-900);
+  line-height: 1;
+}
+.obp-result .obp-result-sub {
+  font-family: var(--font-mono);
+  font-size: .95rem;
+  color: var(--green-900);
+  opacity: .8;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 760px) {
+  .obp-equation { flex-direction: column; align-items: stretch; }
+  .obp-term, .obp-result { max-width: none; }
+  .obp-op, .obp-equals { align-self: center; padding: 0; }
+}
+
+/* ============================================================
+   CO-FOUNDER POSITIONING SECTION
+   ============================================================ */
+
+.cofounder-block {
+  text-align: center;
+}
+.cofounder-tag {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .6rem;
+  letter-spacing: .25em;
+  background: var(--green-900);
+  color: var(--gold-500);
+  padding: 8px 14px;
+  border: 2px solid var(--green-900);
+  margin-bottom: 22px;
+  box-shadow: 4px 4px 0 var(--green-900);
+}
+.cofounder-h2 {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: .015em;
+  color: var(--green-900);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+.cofounder-h2 em {
+  font-style: italic;
+  font-family: var(--font-serif);
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--green-900);
+}
+.cofounder-lead {
+  max-width: 56ch;
+  margin: 0 auto 36px;
+  font-size: 1.1rem;
+  color: var(--green-900);
+}
+.cofounder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+@media (max-width: 760px) { .cofounder-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .cofounder-grid { grid-template-columns: 1fr; } }
+.cofounder-pill {
+  background: var(--green-900);
+  color: var(--cream);
+  padding: 16px 14px;
+  border: 3px solid var(--green-900);
+  box-shadow: 4px 4px 0 var(--green-700);
+  text-align: center;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cofounder-pill strong {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .6rem;
+  letter-spacing: .15em;
+  color: var(--gold-500);
+}
+.cofounder-pill span {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--cream);
+  opacity: .9;
+  letter-spacing: .02em;
+}
+
+/* Sub-bullets inside VS comparison */
+.vs-col ul ul.sub {
+  margin: 8px 0 0;
+  padding-left: 0;
+}
+.vs-col ul ul.sub li {
+  border-bottom: none;
+  padding: 4px 0 4px 22px;
+  font-size: .95rem;
+  opacity: .9;
+}
+.vs-col ul ul.sub li::before {
+  content: "—";
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  top: 4px;
+  color: inherit;
+  opacity: .6;
+}
+.vs-col ul li strong { color: var(--green-900); }
 
 .hero h1 {
   font-family: var(--font-serif);
