@@ -125,20 +125,25 @@ p { margin: 0 0 1em; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px;
+  padding: 10px 24px;
   max-width: var(--maxw);
   margin: 0 auto;
-  gap: 24px;
+  gap: 18px;
 }
 .nav-logo {
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  flex: 0 0 auto;
 }
 .nav-logo img {
-  height: 42px;
+  height: 60px;
   width: auto;
   display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+@media (max-width: 600px) {
+  .nav-logo img { height: 48px; }
 }
 .nav-links { display: flex; gap: 6px; align-items: center; }
 .nav-links a {
