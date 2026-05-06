@@ -131,19 +131,14 @@ p { margin: 0 0 1em; }
   gap: 24px;
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 12px;
-  font-family: var(--font-pixel);
-  font-size: .75rem;
-  color: var(--white);
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
 }
-.nav-logo img { height: 36px; width: auto; image-rendering: pixelated; }
-.nav-logo small {
+.nav-logo img {
+  height: 42px;
+  width: auto;
   display: block;
-  color: var(--gold-500);
-  font-size: .55rem;
-  margin-top: 4px;
-  letter-spacing: .2em;
 }
 .nav-links { display: flex; gap: 6px; align-items: center; }
 .nav-links a {
