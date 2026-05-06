@@ -602,26 +602,52 @@ p { margin: 0 0 1em; }
   to   { transform: scaleX(1); }
 }
 .hero-h1 .flicker {
-  animation: flicker 6s infinite;
+  animation: flicker 2.6s infinite;
+  will-change: opacity, text-shadow;
 }
 @keyframes flicker {
-  0%, 92%, 100% { opacity: 1; }
-  93%           { opacity: .25; }
-  94%           { opacity: 1; }
-  96%           { opacity: .55; }
-  97%           { opacity: 1; }
+  0%   { opacity: 1;  text-shadow: 0 0 24px rgba(239,178,30,.55), 3px 3px 0 var(--green-900); }
+  6%   { opacity: .15; }
+  7%   { opacity: 1; }
+  9%   { opacity: .35; }
+  10%  { opacity: 1; }
+  18%  { opacity: 1; }
+  20%  { opacity: .1; text-shadow: 0 0 6px rgba(239,178,30,.2), 3px 3px 0 var(--green-900); }
+  22%  { opacity: 1; }
+  35%  { opacity: 1; }
+  37%  { opacity: .25; }
+  38%  { opacity: 1; }
+  56%  { opacity: 1; }
+  58%  { opacity: .05; }
+  59%  { opacity: 1; }
+  61%  { opacity: .4; }
+  62%  { opacity: 1; }
+  78%  { opacity: 1; }
+  80%  { opacity: .2; }
+  81%  { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: .1; }
+  94%  { opacity: 1; }
+  96%  { opacity: .55; }
+  97%  { opacity: 1; }
+  100% { opacity: 1; text-shadow: 0 0 24px rgba(239,178,30,.55), 3px 3px 0 var(--green-900); }
 }
 
-/* ----- Lead ----- */
+/* ----- Lead (subtle) ----- */
 .hero-lead {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--cream);
-  max-width: 60ch;
+  font-weight: 300;
+  font-size: clamp(.92rem, 1.25vw, 1.05rem);
+  color: rgba(245,230,200,.72);
+  max-width: 56ch;
   margin: 0 auto 32px;
-  line-height: 1.55;
+  line-height: 1.6;
+  letter-spacing: .005em;
 }
-.hero-lead strong { color: var(--white); }
+.hero-lead strong {
+  color: rgba(245,230,200,.95);
+  font-weight: 500;
+}
 
 /* ----- CTA row ----- */
 .hero-stadium .hero-cta-row {
