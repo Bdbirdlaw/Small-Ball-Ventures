@@ -104,6 +104,19 @@
   wire('dDown', next);
   wire('dUp', prev);
 
+  // ----- "PRESS START" text on screen is also clickable -----
+  document.querySelectorAll('.gb-press-start').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => show(1));
+  });
+
+  // ----- Tapping anywhere on the title screen advances too -----
+  const titleSlide = screen.querySelector('.gb-slide[data-slide="0"]');
+  if (titleSlide) {
+    titleSlide.style.cursor = 'pointer';
+    titleSlide.addEventListener('click', () => { if (idx === 0) show(1); });
+  }
+
   // ----- Keyboard shortcuts -----
   document.addEventListener('keydown', e => {
     // don't hijack Tab/etc
