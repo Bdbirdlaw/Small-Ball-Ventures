@@ -2030,6 +2030,15 @@ p { margin: 0 0 1em; }
   justify-content: center;
 }
 
+/* Two-card variant — centers a pair of cards (used for EIR row) */
+.team-grid--two {
+  grid-template-columns: repeat(2, minmax(280px, 380px));
+  justify-content: center;
+}
+@media (max-width: 700px) {
+  .team-grid--two { grid-template-columns: 1fr; }
+}
+
 .team-recruit-hint {
   margin: 56px 0 0;
   text-align: center;
