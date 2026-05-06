@@ -1798,11 +1798,12 @@ p { margin: 0 0 1em; }
 .espn-brand-sub {
   font-family: 'Inter', sans-serif;
   font-size: .55rem;
-  letter-spacing: .25em;
+  letter-spacing: .2em;
   color: var(--cream);
   text-transform: uppercase;
   margin-top: 4px;
   opacity: .9;
+  white-space: nowrap;
 }
 
 .espn-track {
