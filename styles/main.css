@@ -550,35 +550,35 @@ p { margin: 0 0 1em; }
   50%     { opacity: .55; }
 }
 
-/* ----- Headline (matches the Small Ball logo's chunky pixel face) ----- */
+/* ----- Headline — clean white Bebas Neue, gold blinking MONEYBALL ----- */
 .hero-h1 {
-  font-family: 'Jersey 25', 'Press Start 2P', monospace;
+  font-family: 'Bebas Neue', 'Oswald', 'Anton', Impact, sans-serif;
   font-weight: 400;
-  font-size: clamp(3.4rem, 10vw, 7.5rem);
-  line-height: 1;
-  margin: 0 0 24px;
-  color: var(--cream);
-  letter-spacing: .02em;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: .95;
+  margin: 0 0 22px;
+  color: #FFFFFF;
+  letter-spacing: .015em;
   text-transform: uppercase;
-  -webkit-font-smoothing: none;
-  font-smooth: never;
-  text-rendering: geometricPrecision;
 }
-
 .hero-h1 .line-1,
 .hero-h1 .line-2 {
   display: block;
-  color: var(--cream);
-  text-shadow:
-    0 2px 0 rgba(0,0,0,.25),
-    0 0 22px rgba(255,250,230,.18);
+  color: #FFFFFF;
 }
 .hero-h1 .gold {
   color: var(--gold-500);
+  animation: gold-blink 1.6s ease-in-out infinite;
   text-shadow:
-    0 2px 0 rgba(0,0,0,.35),
-    0 0 14px rgba(239,178,30,.55),
-    0 0 32px rgba(239,178,30,.25);
+    0 0 18px rgba(239,178,30,.55),
+    0 0 38px rgba(239,178,30,.25);
+}
+@keyframes gold-blink {
+  0%, 45%, 100% { opacity: 1; }
+  50%           { opacity: .25; }
+  55%, 90%      { opacity: 1; }
+  92%           { opacity: .55; }
+  94%           { opacity: 1; }
 }
 .hero-h1 .line-1,
 .hero-h1 .line-2 { display: block; }
@@ -605,26 +605,8 @@ p { margin: 0 0 1em; }
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
-/* Friendly glow pulse on MONEYBALL — no harsh blackouts, just a
-   subtle breathing brightness like a stadium light easing on. */
-.hero-h1 .flicker {
-  animation: glow-pulse 4.5s ease-in-out infinite;
-  will-change: filter;
-}
-@keyframes glow-pulse {
-  0%, 100% {
-    filter:
-      drop-shadow(0 0 3px rgba(239,178,30,.7))
-      drop-shadow(0 0 18px rgba(239,178,30,.35))
-      drop-shadow(0 0 42px rgba(239,178,30,.15));
-  }
-  50% {
-    filter:
-      drop-shadow(0 0 5px rgba(239,178,30,.95))
-      drop-shadow(0 0 28px rgba(239,178,30,.55))
-      drop-shadow(0 0 60px rgba(239,178,30,.3));
-  }
-}
+/* (legacy class kept harmless in case markup still references it) */
+.hero-h1 .flicker { animation: gold-blink 1.6s ease-in-out infinite; }
 
 /* ----- Lead (subtle) ----- */
 .hero-lead {
@@ -1375,6 +1357,7 @@ p { margin: 0 0 1em; }
 
 .espn-track {
   flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   position: relative;
 }
@@ -1391,26 +1374,35 @@ p { margin: 0 0 1em; }
 .espn-track::after  { right: 0; background: linear-gradient(270deg, #0A0A0A, transparent); }
 
 .espn-rail {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   height: 100%;
-  white-space: nowrap;
+  width: max-content;
   animation: espn-marquee 60s linear infinite;
-  padding-left: 24px;
+  will-change: transform;
 }
 .espn-ticker:hover .espn-rail { animation-play-state: paused; }
 
+.espn-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
 @keyframes espn-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 .espn-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
   height: 100%;
-  padding: 0 14px;
+  padding: 0 22px;
+  border-right: 1px solid #1F1F1F;
+  flex-shrink: 0;
 }
 
 .espn-tile {
@@ -1474,24 +1466,17 @@ p { margin: 0 0 1em; }
   border: 1px solid rgba(239,178,30,.4);
 }
 
-.espn-sep {
-  display: inline-block;
-  width: 1px;
-  height: 28px;
-  background: #2A2A2A;
-  margin: 0 8px;
-}
-
 @media (max-width: 700px) {
   .espn-ticker { height: 52px; }
   .espn-brand { min-width: 88px; padding: 0 12px; }
   .espn-brand-logo { font-size: 1.2rem; }
   .espn-brand-sub { font-size: .48rem; }
+  .espn-item { padding: 0 14px; gap: 8px; }
   .espn-meta { display: none; }
   .espn-team { font-size: .82rem; }
   .espn-jv { font-size: .68rem; padding: 2px 6px; }
   .espn-status { font-size: .62rem; padding: 3px 6px; }
-  .espn-rail { animation-duration: 40s; }
+  .espn-rail { animation-duration: 45s; }
 }
 
 /* ============================================================
