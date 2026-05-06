@@ -230,44 +230,50 @@ p { margin: 0 0 1em; }
 }
 
 /* ============================================================
-   FOOTER
+   FOOTER (minimal — single row)
    ============================================================ */
 .footer {
   background: var(--green-900);
   color: var(--cream);
-  padding: 48px 0 24px;
-  border-top: 4px solid var(--gold-500);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 32px;
-  align-items: start;
-}
-.footer h4 {
-  font-family: var(--font-pixel);
-  font-size: .65rem;
-  letter-spacing: .2em;
-  color: var(--gold-500);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.footer ul { list-style: none; padding: 0; margin: 0; }
-.footer li { margin-bottom: 8px; }
-.footer a:hover { color: var(--gold-500); }
-.footer-bot {
-  margin-top: 36px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(245,230,200,.15);
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  padding: 18px 0;
+  border-top: 2px solid var(--gold-500);
   font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--cream-2);
+  font-size: .95rem;
 }
-.footer-logo img { height: 56px; image-rendering: pixelated; margin-bottom: 12px; }
-.footer-tag { font-family: var(--font-mono); font-size: 1.05rem; max-width: 320px; opacity: .9; }
-@media (max-width: 760px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+.footer a:hover { color: var(--gold-500); }
+
+.footer-mini-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footer-mini-logo img {
+  height: 32px;
+  image-rendering: pixelated;
+  display: block;
+}
+.footer-mini-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footer-mini-links a {
+  font-family: var(--font-pixel);
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.footer-mini-copy {
+  color: var(--cream-2);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .footer-mini-row { justify-content: center; text-align: center; }
+  .footer-mini-copy { width: 100%; }
 }
 
 /* ============================================================
