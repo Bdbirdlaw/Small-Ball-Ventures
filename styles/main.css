@@ -1075,24 +1075,67 @@ p { margin: 0 0 1em; }
 }
 
 .formula-h2 {
-  font-family: var(--font-serif);
+  font-family: 'Bebas Neue', 'Oswald', 'Anton', Impact, sans-serif;
   font-weight: 400;
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.6rem, 6.8vw, 5.4rem);
+  line-height: .95;
   color: var(--white);
-  margin: 0 0 16px;
-  letter-spacing: -.005em;
+  margin: 0 0 24px;
+  letter-spacing: .015em;
+  text-transform: uppercase;
 }
-.formula-h2 .gold { color: var(--gold-500); }
+.formula-h2-1,
+.formula-h2-2 {
+  display: block;
+}
+.formula-h2-1 {
+  color: rgba(255,255,255,.92);
+  font-size: .68em;          /* slightly smaller setup line */
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+  opacity: .92;
+}
+.formula-h2-2 {
+  color: var(--white);
+}
+
+/* Animated gold underline + halo under "AI era." */
+.formula-glow {
+  position: relative;
+  display: inline-block;
+  color: var(--gold-500);
+  text-shadow:
+    0 0 18px rgba(239,178,30,.45),
+    0 0 42px rgba(239,178,30,.2);
+  padding: 0 .04em;
+}
+.formula-glow::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -.06em;
+  height: 6px;
+  background: var(--gold-500);
+  box-shadow: 0 0 14px rgba(239,178,30,.55);
+  transform-origin: left;
+  animation: formula-underline 1.6s ease-out .25s both;
+}
+@keyframes formula-underline {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
 
 .formula-lead {
-  max-width: 62ch;
-  margin: 0 auto 56px;
+  max-width: 56ch;
+  margin: 0 auto 60px;
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: clamp(.95rem, 1.4vw, 1.1rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.55;
   color: rgba(245,230,200,.78);
+}
+.formula-lead strong {
+  color: var(--white);
+  font-weight: 600;
 }
 
 /* ============================================================
