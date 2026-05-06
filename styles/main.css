@@ -659,6 +659,10 @@ p { margin: 0 0 1em; }
   overflow: hidden;
   min-width: min(560px, 100%);
 }
+.hero-mini-board.hero-mini-board--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: min(440px, 100%);
+}
 .mb-cell {
   padding: 14px 14px;
   border-right: 2px dashed rgba(239,178,30,.3);
