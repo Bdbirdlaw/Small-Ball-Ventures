@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Small Ball Ventures</title>
+<meta name="description" content="The Small Ball Ventures roster — JV-anchored startups built for ~$25M strategic exits." />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/logo.png" alt="Small Ball Ventures" onerror="this.style.display='none'" />
+      <span>Small Ball<small>VENTURES · NASHVILLE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="apply.html">Apply</a>
+    </div>
+    <a href="apply.html" class="nav-cta">Step Up ▶</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">≡</button>
+  </div>
+</nav>
+
+<header class="page-intro">
+  <div class="container">
+    <span class="eyebrow on-dark">★ THE ROSTER · 2025 SEASON</span>
+    <h1>The lineup card.</h1>
+    <p>
+      Twelve disciplined hitters. Each shipped with a JV partner from Day One. Each
+      designed for a clean ~$25M exit inside a five-year window. Browse the roster — or
+      head to the box scores for stats.
+    </p>
+  </div>
+</header>
+
+<!-- ===== STAT BAR ===== -->
+<section class="section cream" style="padding-top: 56px; padding-bottom: 0;">
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><span class="num">12</span><span class="label">Active companies</span></div>
+      <div class="stat"><span class="num">3</span><span class="label">Strategic exits to date</span></div>
+      <div class="stat"><span class="num">$78M</span><span class="label">Total exit value YTD</span></div>
+      <div class="stat"><span class="num">.583</span><span class="label">Current OBP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROSTER ===== -->
+<section class="section cream">
+  <div class="container">
+
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all">★ All</button>
+      <button data-filter="active">On the Field</button>
+      <button data-filter="exit">★ Exited</button>
+      <button data-filter="health">Healthtech</button>
+      <button data-filter="logistics">Logistics</button>
+      <button data-filter="fintech">Fintech</button>
+      <button data-filter="b2b">B2B SaaS</button>
+    </div>
+
+    <div class="grid cols-3" id="roster">
+
+      <!-- 1 -->
+      <article class="bb-card" data-cat="health active">
+        <div class="bb-card-top"><span class="ticker">SBV-001</span><span class="stage">Series A</span></div>
+        <div class="bb-card-img">RxRoute</div>
+        <div class="bb-card-body">
+          <h3>RxRoute</h3>
+          <div class="role">★ Pharmacy logistics for rural health systems</div>
+          <p>JV partner: HCA. Now serving 14 hospitals across TN, KY, AL.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">ARR</span><span class="v">$3.4M</span></div>
+          <div><span class="k">YoY</span><span class="v">318%</span></div>
+          <div><span class="k">YR</span><span class="v">2</span></div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="bb-card" data-cat="logistics exit">
+        <div class="bb-card-top"><span class="ticker">SBV-002</span><span class="stage">★ Acquired</span></div>
+        <div class="bb-card-img">DockLine</div>
+        <div class="bb-card-body">
+          <h3>DockLine</h3>
+          <div class="role">★ Yard management software for 3PLs</div>
+          <p>Acquired by a national logistics platform for $24.6M after 38 months.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">EXIT</span><span class="v">$24.6M</span></div>
+          <div><span class="k">MULT</span><span class="v">8.1x</span></div>
+          <div><span class="k">YR</span><span class="v">3</span></div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="bb-card" data-cat="b2b active">
+        <div class="bb-card-top"><span class="ticker">SBV-003</span><span class="stage">Seed +</span></div>
+        <div class="bb-card-img">Slowpitch</div>
+        <div class="bb-card-body">
+          <h3>Slowpitch</h3>
+          <div class="role">★ Sales enablement for industrial distributors</div>
+          <p>JV with a Fortune 500 industrial supplier. 6 enterprise pilots live.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">ARR</span><span class="v">$1.1M</span></div>
+          <div><span class="k">YoY</span><span class="v">214%</span></div>
+          <div><span class="k">YR</span><span class="v">1</span></div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="bb-card" data-cat="fintech active">
+        <div class="bb-card-top"><span class="ticker">SBV-004</span><span class="stage">Series A</span></div>
+        <div class="bb-card-img">Bullpen</div>
+        <div class="bb-card-body">
+          <h3>Bullpen</h3>
+          <div class="role">★ Embedded finance for music industry payouts</div>
+          <p>JV with a major Nashville music rights group. $42M GMV processed YTD.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">REV</span><span class="v">$2.8M</span></div>
+          <div><span class="k">GMV</span><span class="v">$42M</span></div>
+          <div><span class="k">YR</span><span class="v">2</span></div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="bb-card" data-cat="health exit">
+        <div class="bb-card-top"><span class="ticker">SBV-005</span><span class="stage">★ Acquired</span></div>
+        <div class="bb-card-img">VitalScout</div>
+        <div class="bb-card-body">
+          <h3>VitalScout</h3>
+          <div class="role">★ Remote patient monitoring for SNFs</div>
+          <p>Acquired by LifePoint affiliate at $31.2M after 41 months.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">EXIT</span><span class="v">$31.2M</span></div>
+          <div><span class="k">MULT</span><span class="v">10.4x</span></div>
+          <div><span class="k">YR</span><span class="v">3</span></div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="bb-card" data-cat="b2b active">
+        <div class="bb-card-top"><span class="ticker">SBV-006</span><span class="stage">Seed</span></div>
+        <div class="bb-card-img">Sandlot</div>
+        <div class="bb-card-body">
+          <h3>Sandlot</h3>
+          <div class="role">★ Field service marketplace for HVAC</div>
+          <p>JV with a regional HVAC distributor. 1,200 contractors onboarded.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">GMV</span><span class="v">$6.4M</span></div>
+          <div><span class="k">CO.s</span><span class="v">1.2K</span></div>
+          <div><span class="k">YR</span><span class="v">1</span></div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="bb-card" data-cat="logistics active">
+        <div class="bb-card-top"><span class="ticker">SBV-007</span><span class="stage">Series A</span></div>
+        <div class="bb-card-img">Tarmac</div>
+        <div class="bb-card-body">
+          <h3>Tarmac</h3>
+          <div class="role">★ AI dispatch for regional trucking fleets</div>
+          <p>JV with an SE trucking carrier. 28 fleets, 2,400 trucks routed.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">ARR</span><span class="v">$4.1M</span></div>
+          <div><span class="k">YoY</span><span class="v">198%</span></div>
+          <div><span class="k">YR</span><span class="v">2</span></div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="bb-card" data-cat="fintech active">
+        <div class="bb-card-top"><span class="ticker">SBV-008</span><span class="stage">Seed +</span></div>
+        <div class="bb-card-img">SacFly</div>
+        <div class="bb-card-body">
+          <h3>SacFly</h3>
+          <div class="role">★ AR financing for agricultural co-ops</div>
+          <p>JV with a Tennessee farm credit institution. $18M originated.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">ORIG</span><span class="v">$18M</span></div>
+          <div><span class="k">DEF</span><span class="v">0.6%</span></div>
+          <div><span class="k">YR</span><span class="v">1</span></div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="bb-card" data-cat="health exit">
+        <div class="bb-card-top"><span class="ticker">SBV-009</span><span class="stage">★ Acquired</span></div>
+        <div class="bb-card-img">Stitch&amp;Sync</div>
+        <div class="bb-card-body">
+          <h3>Stitch &amp; Sync</h3>
+          <div class="role">★ EMR integration middleware</div>
+          <p>Acquired by a regional health-IT consolidator at $22.4M.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">EXIT</span><span class="v">$22.4M</span></div>
+          <div><span class="k">MULT</span><span class="v">7.5x</span></div>
+          <div><span class="k">YR</span><span class="v">4</span></div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="bb-card" data-cat="b2b active">
+        <div class="bb-card-top"><span class="ticker">SBV-010</span><span class="stage">Seed</span></div>
+        <div class="bb-card-img">Bunt</div>
+        <div class="bb-card-body">
+          <h3>Bunt</h3>
+          <div class="role">★ Workforce ops for QSR multi-unit operators</div>
+          <p>JV with a 200-store franchisee group. Live in 84 locations.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">ARR</span><span class="v">$0.9M</span></div>
+          <div><span class="k">LOC</span><span class="v">84</span></div>
+          <div><span class="k">YR</span><span class="v">1</span></div>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="bb-card" data-cat="logistics active">
+        <div class="bb-card-top"><span class="ticker">SBV-011</span><span class="stage">Pre-Seed</span></div>
+        <div class="bb-card-img">Walkoff</div>
+        <div class="bb-card-body">
+          <h3>Walkoff</h3>
+          <div class="role">★ Last-mile returns for big-box retail</div>
+          <p>JV with a national big-box. Pilot in 12 metros, expanding to 40.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">PILOT</span><span class="v">12 cty</span></div>
+          <div><span class="k">UV</span><span class="v">$8.20</span></div>
+          <div><span class="k">YR</span><span class="v">0.5</span></div>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="bb-card" data-cat="fintech active">
+        <div class="bb-card-top"><span class="ticker">SBV-012</span><span class="stage">Pre-Seed</span></div>
+        <div class="bb-card-img">SignSteal</div>
+        <div class="bb-card-body">
+          <h3>SignSteal</h3>
+          <div class="role">★ Underwriting tooling for community insurers</div>
+          <p>JV with a 3-state mutual insurer. 17 carriers in pipeline.</p>
+        </div>
+        <div class="bb-stats">
+          <div><span class="k">PILOT</span><span class="v">3 ins.</span></div>
+          <div><span class="k">PIPE</span><span class="v">17</span></div>
+          <div><span class="k">YR</span><span class="v">0.5</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="center" style="margin-top: 48px; font-family: var(--font-mono); font-size: 1.1rem; color: var(--green-700);">
+      ★ All portfolio data shown for illustration of the model. Specific JV partners and figures will be updated as the fund seasons.
+    </p>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section dark">
+  <div class="container center">
+    <div class="diamond-divider"><span>◆ NEXT AT BAT ◆</span></div>
+    <p class="pull-quote on-dark">
+      Think you've got the swing for <span class="gold">spot #13?</span>
+    </p>
+    <span class="cite on-dark">— TRYOUTS OPEN YEAR-ROUND</span>
+    <div style="margin-top: 36px;">
+      <a href="apply.html" class="btn">▶ Apply to Build with Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Small Ball Ventures" onerror="this.style.display='none'" />
+        </div>
+        <p class="footer-tag">A Nashville venture studio building the Moneyball portfolio. Small ball. Big swings. Steady runs.</p>
+      </div>
+      <div>
+        <h4>Roster</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="apply.html">Apply</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul>
+          <li>hello@smallball.vc</li>
+          <li>Nashville, TN</li>
+          <li>The Gulch · 12S</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">Substack</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2025 Small Ball Ventures, LLC.</span>
+      <span>★ MADE IN NASHVILLE ★</span>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

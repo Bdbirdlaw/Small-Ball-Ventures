@@ -1,0 +1,447 @@
+/* ============================================================
+   APPLY PAGE — Gameboy Baseball Video Game theme
+   Gameboy DMG palette + green LCD + pixel typography
+   ============================================================ */
+
+:root {
+  --gb-shell:        #C8C2B0;   /* DMG cream-gray */
+  --gb-shell-dark:   #B0AB99;
+  --gb-shell-shadow: #8A8676;
+  --gb-bezel:        #2D2D2D;
+  --gb-bezel-light:  #4A4A4A;
+  --gb-screen-bg:    #9BBC0F;   /* classic GB green */
+  --gb-screen-mid:   #8BAC0F;
+  --gb-screen-dim:   #306230;
+  --gb-screen-dark:  #0F380F;
+  --gb-button:       #8B2548;   /* magenta-ish */
+  --gb-button-dk:    #5E1A33;
+  --gb-text-red:     #B23A1F;
+  --gb-power-red:    #D33;
+}
+
+.apply-bg {
+  background:
+    radial-gradient(900px 500px at 80% 0%, rgba(239,178,30,.16), transparent 60%),
+    radial-gradient(700px 400px at 0% 100%, rgba(239,178,30,.10), transparent 60%),
+    var(--green-700);
+  min-height: calc(100vh - 80px);
+  padding: 48px 0 96px;
+  color: var(--cream);
+}
+
+.apply-intro {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.apply-intro h1 {
+  color: var(--white);
+  font-family: var(--font-serif);
+  margin-bottom: 6px;
+}
+.apply-intro p {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--cream);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.apply-intro .eyebrow { color: var(--gold-500); }
+
+/* ----- The Gameboy itself ----- */
+.gameboy {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--gb-shell) 0%, var(--gb-shell-dark) 100%);
+  border-radius: 14px 14px 70px 14px;
+  padding: 28px 22px 36px;
+  box-shadow:
+    0 0 0 3px var(--gb-shell-shadow),
+    14px 18px 0 rgba(0,0,0,.35),
+    inset 0 -8px 0 rgba(0,0,0,.08),
+    inset 0 2px 0 rgba(255,255,255,.4);
+  position: relative;
+  font-family: 'Press Start 2P', monospace;
+  user-select: none;
+}
+
+.gb-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 10px;
+  font-size: .55rem;
+  color: var(--gb-shell-shadow);
+  letter-spacing: .1em;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin-bottom: 18px;
+}
+.gb-top-bar .gb-brand { color: var(--gb-bezel); }
+.gb-top-bar .gb-led {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .5rem;
+}
+.gb-top-bar .gb-led::before {
+  content: "";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gb-power-red);
+  box-shadow: 0 0 6px rgba(211,51,51,.8);
+  animation: pwr 1.6s ease-in-out infinite;
+}
+@keyframes pwr {
+  0%,100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
+/* ----- Screen ----- */
+.gb-screen-frame {
+  background: var(--gb-bezel);
+  padding: 28px 18px 36px;
+  border-radius: 8px 8px 32px 8px;
+  position: relative;
+  box-shadow: inset 0 0 0 2px var(--gb-bezel-light), 0 4px 0 rgba(0,0,0,.2);
+}
+.gb-screen-frame::before {
+  content: "● BATTERY";
+  position: absolute;
+  top: 8px; left: 14px;
+  font-size: .42rem;
+  color: var(--gb-power-red);
+  letter-spacing: .15em;
+}
+.gb-screen-frame::after {
+  content: "DOT MATRIX WITH STEREO SOUND";
+  position: absolute;
+  bottom: 10px; left: 0; right: 0;
+  text-align: center;
+  font-size: .42rem;
+  color: var(--gb-shell);
+  letter-spacing: .25em;
+  font-style: italic;
+}
+
+.gb-screen {
+  background: var(--gb-screen-bg);
+  border: 4px solid var(--gb-screen-dark);
+  padding: 14px 12px;
+  height: 360px;
+  overflow: hidden;
+  position: relative;
+  font-size: .58rem;
+  line-height: 1.7;
+  color: var(--gb-screen-dark);
+  /* scanlines */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(15,56,15,.12) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, var(--gb-screen-bg), var(--gb-screen-mid));
+  image-rendering: pixelated;
+}
+
+/* HUD top bar inside screen */
+.gb-hud {
+  display: flex; justify-content: space-between;
+  font-size: .5rem;
+  border-bottom: 2px solid var(--gb-screen-dark);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+.gb-hud .left, .gb-hud .right { display: flex; gap: 10px; }
+
+/* Screens (slides) */
+.gb-slide { display: none; height: 100%; }
+.gb-slide.active { display: flex; flex-direction: column; }
+
+.gb-title {
+  font-size: .8rem;
+  text-align: center;
+  margin: 14px 0 6px;
+  letter-spacing: .12em;
+}
+.gb-subtitle {
+  font-size: .5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: .8;
+}
+
+/* "Press Start" home slide */
+.gb-press-start {
+  text-align: center;
+  margin-top: 18px;
+  font-size: .6rem;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Pixel scene (batter + diamond) */
+.gb-scene {
+  position: relative;
+  height: 110px;
+  margin: 8px 0 10px;
+}
+/* Pitcher's mound + diamond suggestion */
+.gb-scene::before {
+  content: "";
+  position: absolute; left: 50%; top: 22px; transform: translateX(-50%);
+  width: 70px; height: 18px; background: var(--gb-screen-mid);
+  border: 2px solid var(--gb-screen-dark); border-radius: 50%;
+}
+.gb-scene::after {
+  content: "";
+  position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%) rotate(45deg);
+  width: 12px; height: 12px;
+  background: var(--gb-screen-bg); border: 2px solid var(--gb-screen-dark);
+}
+
+/* Pixel batter */
+.gb-batter {
+  position: absolute; left: 18px; bottom: 0;
+  width: 28px; height: 44px;
+  display: grid;
+  grid-template-rows: repeat(11, 4px);
+  grid-template-columns: repeat(7, 4px);
+  gap: 0;
+  animation: batter-bob 0.8s ease-in-out infinite;
+}
+.gb-batter i {
+  background: var(--gb-screen-dark);
+}
+.gb-batter i.empty { background: transparent; }
+@keyframes batter-bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+/* Pixel ball */
+.gb-ball {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: var(--gb-screen-dark);
+  border-radius: 50%;
+  top: 45px;
+  right: 30px;
+  animation: pitch 1.6s linear infinite;
+}
+@keyframes pitch {
+  0%   { right: 30px;  top: 45px; transform: scale(.6); }
+  60%  { right: 70%;   top: 60px; transform: scale(1); }
+  100% { right: 100%;  top: 80px; transform: scale(.4); opacity: 0; }
+}
+
+/* Form rows inside the screen */
+.gb-form { display: flex; flex-direction: column; gap: 8px; flex: 1; overflow-y: auto; padding-right: 4px; }
+.gb-form label {
+  display: block;
+  font-size: .5rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.gb-form input, .gb-form textarea, .gb-form select {
+  width: 100%;
+  background: var(--gb-screen-mid);
+  border: 2px solid var(--gb-screen-dark);
+  color: var(--gb-screen-dark);
+  font-family: 'VT323', monospace;
+  font-size: .95rem;
+  line-height: 1.2;
+  padding: 6px 8px;
+  outline: none;
+}
+.gb-form input::placeholder, .gb-form textarea::placeholder { color: var(--gb-screen-dim); }
+.gb-form input:focus, .gb-form textarea:focus, .gb-form select:focus {
+  background: var(--gb-screen-bg);
+  box-shadow: 0 0 0 2px var(--gb-screen-dark);
+}
+.gb-form textarea { resize: none; min-height: 56px; }
+
+/* Choice buttons (positions/role pickers) */
+.gb-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.gb-choice {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .5rem;
+  padding: 8px 6px;
+  background: var(--gb-screen-mid);
+  border: 2px solid var(--gb-screen-dark);
+  color: var(--gb-screen-dark);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: .04em;
+}
+.gb-choice.selected, .gb-choice:hover {
+  background: var(--gb-screen-dark);
+  color: var(--gb-screen-bg);
+}
+
+/* Footer hints inside screen */
+.gb-hints {
+  margin-top: auto;
+  display: flex; justify-content: space-between;
+  font-size: .45rem;
+  letter-spacing: .15em;
+  padding-top: 8px;
+  border-top: 2px solid var(--gb-screen-dark);
+}
+
+/* GAME OVER / WIN screen */
+.gb-final {
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%;
+}
+.gb-final h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--gb-screen-dark);
+  text-shadow: 2px 2px 0 var(--gb-screen-mid);
+  animation: bounce 1s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.gb-final .runs {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .55rem;
+  background: var(--gb-screen-dark);
+  color: var(--gb-screen-bg);
+  padding: 10px 14px;
+  margin: 8px 0;
+}
+
+/* ----- Brand strip ----- */
+.gb-brand-strip {
+  text-align: center;
+  margin: 14px 0 4px;
+  font-size: .65rem;
+  color: var(--gb-bezel);
+  letter-spacing: .2em;
+}
+.gb-brand-strip span { color: var(--gb-button); }
+
+/* ----- D-pad + A/B buttons ----- */
+.gb-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 18px;
+  gap: 12px;
+}
+
+.dpad {
+  position: relative;
+  width: 100px; height: 100px;
+  margin: 0 auto;
+}
+.dpad button {
+  position: absolute;
+  background: var(--gb-bezel);
+  color: var(--gb-shell);
+  width: 32px; height: 32px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .55rem;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,.4), 0 2px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+}
+.dpad button:active { transform: translateY(1px); box-shadow: inset 0 -1px 0 rgba(0,0,0,.4); }
+.dpad .up    { top: 0;    left: 34px; }
+.dpad .down  { bottom: 0; left: 34px; }
+.dpad .left  { top: 34px; left: 0; }
+.dpad .right { top: 34px; right: 0; }
+.dpad::before {
+  content: ""; position: absolute; left: 34px; top: 32px;
+  width: 32px; height: 36px;
+  background: var(--gb-bezel);
+}
+
+.ab {
+  display: flex; gap: 16px; align-items: center; justify-content: flex-end;
+  transform: rotate(-22deg);
+  padding-right: 6px;
+}
+.ab button {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--gb-button);
+  color: var(--white);
+  font-family: 'Press Start 2P', monospace;
+  font-size: .9rem;
+  box-shadow:
+    inset 0 -4px 0 var(--gb-button-dk),
+    0 4px 0 rgba(0,0,0,.3);
+  cursor: pointer;
+}
+.ab button:active { transform: translateY(2px); box-shadow: inset 0 -2px 0 var(--gb-button-dk); }
+.ab .label-row {
+  position: absolute;
+  margin-top: 76px;
+  font-size: .45rem;
+  letter-spacing: .2em;
+  color: var(--gb-bezel);
+  display: flex; gap: 28px;
+  transform: rotate(22deg);
+}
+
+/* ----- Start / Select ----- */
+.gb-start-select {
+  display: flex; gap: 18px; justify-content: center;
+  margin-top: 22px;
+  transform: rotate(-22deg);
+}
+.gb-start-select button {
+  background: var(--gb-bezel-light);
+  color: var(--gb-shell);
+  font-family: 'Press Start 2P', monospace;
+  font-size: .45rem;
+  padding: 6px 14px;
+  border-radius: 12px;
+  letter-spacing: .15em;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.4);
+  cursor: pointer;
+}
+
+/* ----- Speaker grill ----- */
+.gb-speaker {
+  margin-top: 22px;
+  display: flex; gap: 6px; justify-content: flex-end;
+  transform: rotate(-22deg);
+  padding-right: 6px;
+}
+.gb-speaker i {
+  display: block;
+  width: 4px; height: 28px;
+  background: var(--gb-bezel);
+  border-radius: 2px;
+}
+
+/* ----- Beneath the gameboy: hint card ----- */
+.apply-hint {
+  max-width: 520px;
+  margin: 28px auto 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--cream);
+  opacity: .85;
+}
+.apply-hint code {
+  font-family: 'Press Start 2P', monospace;
+  font-size: .55rem;
+  color: var(--gold-500);
+  background: var(--green-900);
+  padding: 4px 6px;
+  margin: 0 2px;
+  border: 1px solid var(--gold-500);
+}
+
+/* Mobile: shrink */
+@media (max-width: 560px) {
+  .gameboy { padding: 22px 16px 28px; }
+  .gb-screen { height: 380px; font-size: .55rem; }
+  .ab button { width: 44px; height: 44px; font-size: .75rem; }
+  .dpad { width: 90px; height: 90px; }
+  .dpad .up,.dpad .down { left: 30px; } .dpad .left { top: 30px; } .dpad .right { top: 30px; }
+}

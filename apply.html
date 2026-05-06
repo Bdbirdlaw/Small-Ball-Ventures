@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apply — Small Ball Ventures</title>
+<meta name="description" content="Step up to the plate. Apply to build with Small Ball Ventures." />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css" />
+<link rel="stylesheet" href="styles/apply.css" />
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/logo.png" alt="Small Ball Ventures" onerror="this.style.display='none'" />
+      <span>Small Ball<small>VENTURES · NASHVILLE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="apply.html" class="active">Apply</a>
+    </div>
+    <a href="apply.html" class="nav-cta">Step Up ▶</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">≡</button>
+  </div>
+</nav>
+
+<main class="apply-bg">
+  <div class="container">
+    <div class="apply-intro">
+      <span class="eyebrow on-dark">★ TRY OUTS · CARTRIDGE INSERTED</span>
+      <h1>Step up to the plate.</h1>
+      <p>Use the controls — or just type. Five innings to a complete application. Press <strong>START</strong> to play ball.</p>
+    </div>
+
+    <!-- ===== GAMEBOY ===== -->
+    <div class="gameboy" id="gb">
+      <div class="gb-top-bar">
+        <span class="gb-brand">SMALL BALL · DMG-01</span>
+        <span class="gb-led">PWR</span>
+      </div>
+
+      <div class="gb-screen-frame">
+        <div class="gb-screen" id="gbScreen">
+
+          <!-- Slide 0: TITLE -->
+          <section class="gb-slide active" data-slide="0">
+            <div class="gb-hud"><span class="left">★ SMALL BALL '25</span><span class="right">P1</span></div>
+            <div class="gb-title">SMALL BALL</div>
+            <div class="gb-subtitle">VENTURES BASEBALL</div>
+            <div class="gb-scene">
+              <div class="gb-batter" aria-hidden="true">
+                <!-- 7x11 pixel batter (head, body, bat) -->
+                <i class="empty"></i><i class="empty"></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i class="empty"></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i></i><i></i><i></i><i></i><i></i><i class="empty"></i>
+                <i class="empty"></i><i class="empty"></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i><i class="empty"></i><i></i>
+                <i class="empty"></i><i></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i></i><i class="empty"></i><i></i><i class="empty"></i><i class="empty"></i><i class="empty"></i>
+                <i class="empty"></i><i></i><i></i><i></i><i class="empty"></i><i class="empty"></i><i class="empty"></i>
+                <i></i><i></i><i class="empty"></i><i></i><i></i><i class="empty"></i><i class="empty"></i>
+              </div>
+              <div class="gb-ball"></div>
+            </div>
+            <div class="gb-press-start">▶ PRESS START</div>
+            <div class="gb-hints"><span>©2025 SBV</span><span>1P · A=START</span></div>
+          </section>
+
+          <!-- Slide 1: SCOUT REPORT -->
+          <section class="gb-slide" data-slide="1">
+            <div class="gb-hud"><span class="left">INNING 1/5</span><span class="right">SCOUT</span></div>
+            <div class="gb-title">SCOUT REPORT</div>
+            <div class="gb-subtitle">★ WHO ARE YOU? ★</div>
+            <div class="gb-form">
+              <div>
+                <label>Player Name</label>
+                <input type="text" name="name" id="f-name" placeholder="Type your name…" autocomplete="name" />
+              </div>
+              <div>
+                <label>E-Mail Address</label>
+                <input type="email" name="email" id="f-email" placeholder="you@team.com" autocomplete="email" />
+              </div>
+              <div>
+                <label>Hometown</label>
+                <input type="text" name="city" id="f-city" placeholder="Nashville, TN" />
+              </div>
+            </div>
+            <div class="gb-hints"><span>◀▶ MOVE</span><span>A=NEXT  B=BACK</span></div>
+          </section>
+
+          <!-- Slide 2: PICK YOUR POSITION -->
+          <section class="gb-slide" data-slide="2">
+            <div class="gb-hud"><span class="left">INNING 2/5</span><span class="right">POSITION</span></div>
+            <div class="gb-title">PICK A POSITION</div>
+            <div class="gb-subtitle">★ HOW DO YOU PLAY? ★</div>
+            <div class="gb-form">
+              <div class="gb-choices" id="positionChoices">
+                <button type="button" class="gb-choice" data-val="founder">⚾ FOUNDER</button>
+                <button type="button" class="gb-choice" data-val="cofounder">★ CO-FOUNDER</button>
+                <button type="button" class="gb-choice" data-val="expert">◆ FIELD EXPERT</button>
+                <button type="button" class="gb-choice" data-val="operator">▲ OPERATOR</button>
+                <button type="button" class="gb-choice" data-val="lp">$ LP / INVESTOR</button>
+                <button type="button" class="gb-choice" data-val="other">? OTHER</button>
+              </div>
+              <div>
+                <label>Years On The Field</label>
+                <input type="text" id="f-years" placeholder="e.g. 8 years" />
+              </div>
+            </div>
+            <div class="gb-hints"><span>SELECT 1</span><span>A=NEXT  B=BACK</span></div>
+          </section>
+
+          <!-- Slide 3: BATTING STATS -->
+          <section class="gb-slide" data-slide="3">
+            <div class="gb-hud"><span class="left">INNING 3/5</span><span class="right">STATS</span></div>
+            <div class="gb-title">BATTING STATS</div>
+            <div class="gb-subtitle">★ TRACK RECORD ★</div>
+            <div class="gb-form">
+              <div>
+                <label>Best Career At-Bat</label>
+                <textarea id="f-bigwin" placeholder="The win you're proudest of…"></textarea>
+              </div>
+              <div>
+                <label>Strikeout You Learned From</label>
+                <textarea id="f-loss" placeholder="The loss that taught you something…"></textarea>
+              </div>
+            </div>
+            <div class="gb-hints"><span>BE HONEST</span><span>A=NEXT  B=BACK</span></div>
+          </section>
+
+          <!-- Slide 4: THE PITCH -->
+          <section class="gb-slide" data-slide="4">
+            <div class="gb-hud"><span class="left">INNING 4/5</span><span class="right">PITCH</span></div>
+            <div class="gb-title">THROW THE PITCH</div>
+            <div class="gb-subtitle">★ YOUR IDEA / THESIS ★</div>
+            <div class="gb-form">
+              <div>
+                <label>Company / Idea Name</label>
+                <input type="text" id="f-co" placeholder="Working title…" />
+              </div>
+              <div>
+                <label>What you're building (1 sentence)</label>
+                <textarea id="f-pitch" placeholder="We're building ___ for ___ that ___."></textarea>
+              </div>
+              <div>
+                <label>Possible JV Partner</label>
+                <input type="text" id="f-jv" placeholder="Who could ship with you?" />
+              </div>
+            </div>
+            <div class="gb-hints"><span>KEEP IT TIGHT</span><span>A=NEXT  B=BACK</span></div>
+          </section>
+
+          <!-- Slide 5: REVIEW -->
+          <section class="gb-slide" data-slide="5">
+            <div class="gb-hud"><span class="left">INNING 5/5</span><span class="right">REVIEW</span></div>
+            <div class="gb-title">REVIEW &amp; SUBMIT</div>
+            <div class="gb-subtitle">★ FINAL AT-BAT ★</div>
+            <div class="gb-form" id="reviewBox" style="font-family:'VT323',monospace;font-size:1rem;line-height:1.4;">
+              <div id="reviewSummary">Press ▶ to confirm your roster card.</div>
+              <div>
+                <label>Anything Else (Optional)</label>
+                <textarea id="f-extra" placeholder="Coach's note…"></textarea>
+              </div>
+            </div>
+            <div class="gb-hints"><span>A=SWING  B=BACK</span><span>SUBMIT ▶</span></div>
+          </section>
+
+          <!-- Slide 6: HOMERUN -->
+          <section class="gb-slide" data-slide="6">
+            <div class="gb-final">
+              <h2>HOME RUN!</h2>
+              <div class="runs">★ APPLICATION SENT ★</div>
+              <div style="font-family:'VT323',monospace; font-size:1.05rem; line-height:1.3; margin-top:8px;">
+                Nice swing, <span id="winName">player</span>.<br/>
+                We'll review the tape.<br/>
+                Expect a reply within<br/>
+                <strong>3 business days</strong>.
+              </div>
+              <div class="gb-press-start" style="margin-top:14px;">▶ INSERT NEW CART</div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <div class="gb-brand-strip">
+        <span>★</span> SMALL BALL <strong>VENTURES</strong> <span>★</span>
+      </div>
+
+      <div class="gb-controls">
+        <div class="dpad" role="group" aria-label="D-Pad">
+          <button class="up" id="dUp" aria-label="Up">▲</button>
+          <button class="down" id="dDown" aria-label="Down">▼</button>
+          <button class="left" id="dLeft" aria-label="Left">◀</button>
+          <button class="right" id="dRight" aria-label="Right">▶</button>
+        </div>
+        <div class="ab" role="group" aria-label="A and B buttons">
+          <button id="btnB" aria-label="B Button">B</button>
+          <button id="btnA" aria-label="A Button">A</button>
+        </div>
+      </div>
+
+      <div class="gb-controls" style="margin-top: 6px; align-items: start;">
+        <div class="gb-start-select">
+          <button id="btnSelect">SELECT</button>
+          <button id="btnStart">START</button>
+        </div>
+        <div class="gb-speaker" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </div>
+
+    <p class="apply-hint">
+      ★ Use the buttons or your keyboard. <code>← →</code> to navigate, <code>A</code> = next, <code>B</code> = back, <code>ENTER</code> to swing.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Small Ball Ventures" onerror="this.style.display='none'" />
+        </div>
+        <p class="footer-tag">A Nashville venture studio building the Moneyball portfolio. Small ball. Big swings. Steady runs.</p>
+      </div>
+      <div>
+        <h4>Roster</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="apply.html">Apply</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reach Us</h4>
+        <ul>
+          <li>hello@smallball.vc</li>
+          <li>Nashville, TN</li>
+          <li>The Gulch · 12S</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">Substack</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2025 Small Ball Ventures, LLC.</span>
+      <span>★ MADE IN NASHVILLE ★</span>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+<script src="scripts/apply.js"></script>
+</body>
+</html>
