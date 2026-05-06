@@ -1940,6 +1940,41 @@ p { margin: 0 0 1em; }
 }
 .player-body p { font-size: .95rem; color: #2A2F2B; }
 
+/* Expanded team-grid reveal */
+.team-grid-extended {
+  margin-top: 28px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity .3s ease, max-height .5s ease;
+}
+.team-grid-extended[hidden] { display: none; }
+.team-grid-extended.is-open {
+  opacity: 1;
+  max-height: 4000px; /* large enough for 6 cards */
+  overflow: visible;
+}
+
+.team-expand-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 36px;
+}
+.team-expand-btn {
+  cursor: pointer;
+  font-family: var(--font-pixel);
+}
+.team-expand-hint {
+  margin: 0;
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  opacity: .85;
+  text-align: center;
+}
+
 /* ============================================================
    UTIL
    ============================================================ */

@@ -32,6 +32,26 @@
     });
   }
 
+  // ----- Team roster expand/collapse (About page) -----
+  const teamBtn = document.getElementById('teamExpandBtn');
+  const teamExtra = document.getElementById('teamGridExtended');
+  if (teamBtn && teamExtra) {
+    teamBtn.addEventListener('click', () => {
+      const open = teamExtra.classList.toggle('is-open');
+      const label = teamBtn.querySelector('.team-expand-label');
+      if (open) {
+        teamExtra.hidden = false;
+        teamBtn.setAttribute('aria-expanded', 'true');
+        if (label) label.textContent = 'Hide Full Roster ▲';
+      } else {
+        teamBtn.setAttribute('aria-expanded', 'false');
+        if (label) label.textContent = 'View Full Roster ▼';
+        // Wait for collapse transition before re-hiding from layout
+        setTimeout(() => { if (!teamExtra.classList.contains('is-open')) teamExtra.hidden = true; }, 500);
+      }
+    });
+  }
+
   // ----- Subtle reveal on scroll -----
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
