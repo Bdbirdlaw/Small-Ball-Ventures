@@ -564,14 +564,16 @@ p { margin: 0 0 1em; }
   50%     { opacity: .25; }
 }
 
-/* ----- Headline ----- */
+/* ----- Headline (Moneyball-style condensed bold caps) ----- */
 .hero-h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 7vw, 6rem);
-  line-height: .95;
+  font-family: 'Bebas Neue', 'Oswald', 'Anton', Impact, sans-serif;
+  font-weight: 400;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: .92;
   margin: 0 0 22px;
   color: var(--white);
-  letter-spacing: -.01em;
+  letter-spacing: .015em;
+  text-transform: uppercase;
 }
 .hero-h1 .line-1,
 .hero-h1 .line-2 { display: block; }
@@ -672,64 +674,10 @@ p { margin: 0 0 1em; }
   .mb-cell:nth-child(1), .mb-cell:nth-child(2) { border-bottom: 2px dashed rgba(239,178,30,.3); }
 }
 
-/* ----- Animated pixel batter strip ----- */
-.hero-batter-strip {
-  position: relative;
-  z-index: 4;
-  margin: 56px auto 0;
-  height: 64px;
-  max-width: 720px;
-  width: 100%;
-  border-top: 2px dashed rgba(239,178,30,.3);
-  border-bottom: 2px dashed rgba(239,178,30,.3);
-  background: rgba(0,30,22,.3);
-}
-.hb-pitcher,
-.hb-batter {
-  position: absolute;
-  bottom: 8px;
-  width: 22px; height: 36px;
-  background:
-    linear-gradient(180deg, var(--gold-500) 0 30%, var(--cream) 30% 100%);
-  clip-path: polygon(20% 0, 80% 0, 100% 30%, 100% 100%, 0 100%, 0 30%);
-  filter: drop-shadow(2px 2px 0 var(--green-900));
-}
-.hb-pitcher { left: 18%; }
-.hb-batter  {
-  right: 18%;
-  transform: scaleX(-1);
-  animation: batter-swing 2.4s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-@keyframes batter-swing {
-  0%,55%   { transform: scaleX(-1) rotate(0deg); }
-  65%      { transform: scaleX(-1) rotate(-12deg); }
-  72%      { transform: scaleX(-1) rotate(8deg); }
-  100%     { transform: scaleX(-1) rotate(0deg); }
-}
-.hb-ball {
-  position: absolute;
-  width: 10px; height: 10px;
-  background: var(--cream);
-  border-radius: 50%;
-  bottom: 32px;
-  left: calc(18% + 22px);
-  box-shadow: 0 0 8px rgba(255,255,255,.6);
-  animation: hb-pitch 2.4s linear infinite;
-}
-@keyframes hb-pitch {
-  0%   { left: calc(18% + 22px); transform: translateY(0)  scale(1);   opacity: 1; }
-  55%  { left: calc(82% - 22px); transform: translateY(-4px) scale(1); opacity: 1; }
-  62%  { left: calc(82% - 22px); transform: translateY(-2px) scale(1.3); opacity: 1; }
-  72%  { left: 50%;              transform: translateY(-180px) scale(1); opacity: 1; }
-  100% { left: 0%;               transform: translateY(-260px) scale(.4); opacity: 0; }
-}
-
 /* ----- mobile tightening ----- */
 @media (max-width: 600px) {
   .hero-stadium { padding-top: 64px; padding-bottom: 56px; }
   .hero-h1 { letter-spacing: 0; }
-  .hero-batter-strip { margin-top: 36px; height: 56px; }
   .stadium-lights .beam { width: 140px; }
   .diamond-bg { width: 600px; height: 600px; bottom: -120px; }
   .ambient-balls .ball { width: 9px; height: 9px; }
