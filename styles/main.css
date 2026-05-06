@@ -1545,9 +1545,10 @@ p { margin: 0 0 1em; }
   color: var(--cream);
   padding: clamp(56px, 9vw, 110px) 0 clamp(40px, 6vw, 70px);
   border-bottom: 4px solid var(--gold-500);
+  text-align: center;
 }
 .page-intro h1 { color: var(--white); }
-.page-intro p { color: var(--cream); max-width: 60ch; font-size: 1.15rem; }
+.page-intro p { color: var(--cream); max-width: 60ch; font-size: 1.15rem; margin-left: auto; margin-right: auto; }
 
 /* ============================================================
    QUOTE / DIAMOND DIVIDER
