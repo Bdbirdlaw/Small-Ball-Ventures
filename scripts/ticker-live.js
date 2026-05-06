@@ -33,7 +33,6 @@
   function renderItem(it) {
     return `
       <div class="espn-item">
-        <span class="espn-tile" style="background:${esc(it.tile || '#1A1A1A')};">${esc(it.acronym || '')}</span>
         <span class="espn-team">${esc(it.source || '')}</span>
         <span class="espn-meta">${esc(it.headline || '')}</span>
       </div>`;
