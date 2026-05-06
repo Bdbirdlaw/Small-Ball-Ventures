@@ -95,6 +95,11 @@ p { margin: 0 0 1em; }
 .section.darker { background: var(--green-800); color: var(--cream); }
 .section.gold { background: var(--gold-500); color: var(--green-900); }
 .section.cream { background: var(--cream); }
+.section.section-scoreboard {
+  background: #0A0F0C;
+  color: var(--cream);
+  border-top: 4px solid var(--gold-500);
+}
 
 .grid { display: grid; gap: 32px; }
 .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
