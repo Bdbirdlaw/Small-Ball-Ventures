@@ -1915,6 +1915,11 @@ p { margin: 0 0 1em; }
   background: rgba(0,0,0,.05);
   border: 1.5px solid var(--green-900);
 }
+.espn-status.down {
+  color: #FFFFFF;
+  background: #B12727;
+  border: 1.5px solid var(--green-900);
+}
 
 @media (max-width: 700px) {
   .espn-ticker { height: 52px; }
