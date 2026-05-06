@@ -32,19 +32,70 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<header class="hero hero-solo">
-  <div class="container">
-    <span class="eyebrow on-dark">⚾ Nashville · Est. 2025 · Venture Studio</span>
-    <h1>The <span class="gold">Moneyball</span> strategy<br/>for venture studios.</h1>
-    <p class="lead">
-      Others swing for unicorns. <strong>We look to get on base.</strong>
+<header class="hero-stadium" id="hero">
+  <!-- Stadium light beams -->
+  <div class="stadium-lights" aria-hidden="true">
+    <span class="beam b1"></span>
+    <span class="beam b2"></span>
+    <span class="beam b3"></span>
+  </div>
+
+  <!-- Diamond watermark -->
+  <div class="diamond-bg" aria-hidden="true">
+    <span class="diamond"></span>
+    <span class="base b-home"></span>
+    <span class="base b-first"></span>
+    <span class="base b-second"></span>
+    <span class="base b-third"></span>
+  </div>
+
+  <!-- Floating baseballs -->
+  <div class="ambient-balls" aria-hidden="true">
+    <i class="ball b-a"></i>
+    <i class="ball b-b"></i>
+    <i class="ball b-c"></i>
+    <i class="ball b-d"></i>
+    <i class="ball b-e"></i>
+  </div>
+
+  <!-- Scanlines overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="hero-stadium-inner">
+    <span class="on-air">
+      <i class="dot"></i> NOW BROADCASTING FROM NASHVILLE, TN
+    </span>
+
+    <h1 class="hero-h1">
+      <span class="line-1">THE <span class="gold flicker">MONEYBALL</span></span>
+      <span class="line-2">STRATEGY FOR <span class="underline-gold">VENTURE STUDIOS.</span></span>
+    </h1>
+
+    <p class="hero-lead">
+      Others swing for unicorns. <strong>We look to get on base.</strong><br/>
       We pair scrappy founders with industry experts to achieve
       <strong>$25M exits</strong> on <strong>~900% fund returns</strong>.
     </p>
+
     <div class="hero-cta-row">
       <a href="apply.html" class="btn">Apply ▶</a>
       <a href="#strategy" class="btn ghost">Read the Playbook</a>
     </div>
+
+    <!-- Mini scoreboard strip -->
+    <div class="hero-mini-board" aria-label="Live scoreboard">
+      <div class="mb-cell"><span class="mb-k">EXIT</span><span class="mb-v">$25M</span></div>
+      <div class="mb-cell"><span class="mb-k">FUND</span><span class="mb-v">~9.0x</span></div>
+      <div class="mb-cell"><span class="mb-k">OBP</span><span class="mb-v">.580</span></div>
+      <div class="mb-cell"><span class="mb-k">CO.s</span><span class="mb-v">12</span></div>
+    </div>
+  </div>
+
+  <!-- Pixel batter animation strip -->
+  <div class="hero-batter-strip" aria-hidden="true">
+    <div class="hb-pitcher"></div>
+    <div class="hb-ball"></div>
+    <div class="hb-batter"></div>
   </div>
 </header>
 
