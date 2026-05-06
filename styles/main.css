@@ -1175,17 +1175,22 @@ p { margin: 0 0 1em; }
   border-color: var(--green-900);
   color: var(--green-900);
   box-shadow: 6px 6px 0 var(--green-900);
+  flex: 0 0 160px;
+  min-width: 140px;
+  max-width: 180px;
+  padding: 14px 12px;
+  align-self: center;
 }
 .obp-result .obp-result-label {
   font-family: 'Bebas Neue', 'Oswald', sans-serif;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   letter-spacing: .05em;
   color: var(--green-900);
   line-height: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 .obp-result .obp-result-label .line { display: block; line-height: 1; }
 .obp-result .obp-result-sub {
