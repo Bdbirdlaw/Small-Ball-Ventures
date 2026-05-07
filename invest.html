@@ -50,138 +50,181 @@
       <!-- ===== Form ===== -->
       <section class="invest-form-card">
         <h2 class="invest-h2">Indication of Interest</h2>
-        <p class="invest-h2-sub">All fields required unless noted. We respond within 2 business days.</p>
+        <p class="invest-h2-sub">Three short steps. Your progress saves automatically.</p>
 
-        <form id="lpForm" class="invest-form" novalidate>
-          <fieldset>
-            <legend>1 · Contact</legend>
-            <div class="row-2">
-              <label>
-                <span>Full Name</span>
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-            </div>
-            <div class="row-2">
-              <label>
-                <span>Phone <em>(optional)</em></span>
-                <input type="tel" name="phone" autocomplete="tel" />
-              </label>
-              <label>
-                <span>City &amp; State</span>
-                <input type="text" name="city" placeholder="Nashville, TN" required />
-              </label>
-            </div>
-            <div class="row-2">
-              <label>
-                <span>Firm / Family Office <em>(if any)</em></span>
-                <input type="text" name="firm" />
-              </label>
-              <label>
-                <span>Title / Role</span>
-                <input type="text" name="title" placeholder="Principal, GP, Chief Investment Officer…" />
-              </label>
-            </div>
-          </fieldset>
+        <!-- Progress bar -->
+        <div class="form-progress" id="formProgress" data-total="3">
+          <div class="form-progress-track">
+            <span class="form-progress-fill" id="formProgressFill" style="width:33.33%"></span>
+          </div>
+          <div class="form-progress-meta">
+            <span class="form-progress-step">Step <strong id="formProgressNum">1</strong> of <strong>3</strong></span>
+            <span class="form-progress-name" id="formProgressName">About you</span>
+          </div>
+        </div>
 
-          <fieldset>
-            <legend>2 · Investor Type</legend>
-            <div class="radio-grid">
-              <label class="radio-card"><input type="radio" name="type" value="individual" required /><span>Individual / HNW</span></label>
-              <label class="radio-card"><input type="radio" name="type" value="family-office" /><span>Family Office</span></label>
-              <label class="radio-card"><input type="radio" name="type" value="institutional" /><span>Institutional</span></label>
-              <label class="radio-card"><input type="radio" name="type" value="fund-of-funds" /><span>Fund of Funds</span></label>
-              <label class="radio-card"><input type="radio" name="type" value="entity" /><span>Trust / LLC / Corp</span></label>
-              <label class="radio-card"><input type="radio" name="type" value="other" /><span>Other</span></label>
-            </div>
-          </fieldset>
+        <form id="lpForm" class="invest-form invest-form--steps" novalidate>
 
-          <fieldset>
-            <legend>3 · Accreditation Status</legend>
-            <p class="fieldset-help">Per SEC Rule 501. Select the option that best applies.</p>
-            <div class="radio-stack">
-              <label class="radio-row"><input type="radio" name="accred" value="income" required /><span><strong>Income.</strong> Individual income &gt; $200K (or joint &gt; $300K) in each of the last two years, with reasonable expectation of the same this year.</span></label>
-              <label class="radio-row"><input type="radio" name="accred" value="net-worth" /><span><strong>Net Worth.</strong> Individual / joint net worth &gt; $1M, excluding primary residence.</span></label>
-              <label class="radio-row"><input type="radio" name="accred" value="entity" /><span><strong>Entity.</strong> Trust / LLC / corporation with &gt; $5M in assets, or whose owners are all accredited.</span></label>
-              <label class="radio-row"><input type="radio" name="accred" value="license" /><span><strong>Professional.</strong> Holder of a Series 7, 65, or 82 license in good standing.</span></label>
-              <label class="radio-row"><input type="radio" name="accred" value="not-sure" /><span><strong>Not sure.</strong> We can walk through the criteria together.</span></label>
-              <label class="radio-row"><input type="radio" name="accred" value="not-accredited" /><span>I am <strong>not</strong> currently accredited.</span></label>
-            </div>
-          </fieldset>
+          <!-- ============================================================
+               STEP 1 · About you
+               ============================================================ -->
+          <div class="form-step is-active" data-step="1" data-step-name="About you">
+            <p class="form-step-intro">Just the basics. Anything else can come on the call.</p>
 
-          <fieldset>
-            <legend>4 · Indicative Commitment</legend>
-            <div class="radio-grid">
-              <label class="radio-card"><input type="radio" name="commit" value="25-100k" required /><span>$25K – $100K</span></label>
-              <label class="radio-card"><input type="radio" name="commit" value="100-500k" /><span>$100K – $500K</span></label>
-              <label class="radio-card"><input type="radio" name="commit" value="500k-1m" /><span>$500K – $1M</span></label>
-              <label class="radio-card"><input type="radio" name="commit" value="1m-2m" /><span>$1M – $2M</span></label>
-              <label class="radio-card"><input type="radio" name="commit" value="2m-plus" /><span>$2M+</span></label>
-              <label class="radio-card"><input type="radio" name="commit" value="exploring" /><span>Still exploring</span></label>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>5 · Timeline &amp; Interests</legend>
-            <div class="row-2">
-              <label>
-                <span>Timeline to Commit</span>
-                <select name="timeline" required>
-                  <option value="" disabled selected>Choose…</option>
-                  <option value="now">Ready now (next 30 days)</option>
-                  <option value="1-3">1–3 months</option>
-                  <option value="3-6">3–6 months</option>
-                  <option value="6-12">6–12 months</option>
-                  <option value="exploring">Exploratory only</option>
-                </select>
-              </label>
-              <label>
-                <span>How did you find us?</span>
-                <select name="referral">
-                  <option value="" disabled selected>Choose…</option>
-                  <option>Personal introduction</option>
-                  <option>LinkedIn</option>
-                  <option>Press / podcast</option>
-                  <option>Conference / event</option>
-                  <option>Existing portfolio company</option>
-                  <option>Other</option>
-                </select>
-              </label>
-            </div>
-            <fieldset class="check-grid" style="border:none; padding:0; margin-top: 14px;">
-              <legend class="sub-legend">Areas of interest <em>(check all that apply)</em></legend>
-              <label class="check-pill"><input type="checkbox" name="interest" value="fund-i" /><span>Fund I (Inaugural Vintage)</span></label>
-              <label class="check-pill"><input type="checkbox" name="interest" value="co-invest" /><span>Co-invest opportunities</span></label>
-              <label class="check-pill"><input type="checkbox" name="interest" value="advisory" /><span>Advisory / scouting role</span></label>
-              <label class="check-pill"><input type="checkbox" name="interest" value="follow" /><span>Just follow updates</span></label>
+            <fieldset>
+              <div class="row-2">
+                <label>
+                  <span>Full Name <em class="req">*</em></span>
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  <span>Email <em class="req">*</em></span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+              </div>
+              <div class="row-2">
+                <label>
+                  <span>Phone <em>optional</em></span>
+                  <input type="tel" name="phone" autocomplete="tel" />
+                </label>
+                <label>
+                  <span>City &amp; State <em>optional</em></span>
+                  <input type="text" name="city" placeholder="Nashville, TN" />
+                </label>
+              </div>
+              <div class="row-2">
+                <label>
+                  <span>Firm / Family Office <em>optional</em></span>
+                  <input type="text" name="firm" />
+                </label>
+                <label>
+                  <span>Title <em>optional</em></span>
+                  <input type="text" name="title" placeholder="Principal, GP, CIO…" />
+                </label>
+              </div>
             </fieldset>
-          </fieldset>
 
-          <fieldset>
-            <legend>6 · Notes</legend>
-            <label>
-              <span>Anything else we should know? <em>(optional)</em></span>
-              <textarea name="notes" rows="4" placeholder="Sectors of interest, return profile, restrictions, prior fund commitments, questions…"></textarea>
-            </label>
-          </fieldset>
-
-          <div class="form-consent">
-            <label class="consent-row">
-              <input type="checkbox" name="consent" required />
-              <span>
-                I confirm the information above is accurate to the best of my knowledge,
-                and I understand this submission is an <strong>indication of interest</strong>,
-                not a binding commitment or subscription.
-              </span>
-            </label>
+            <div class="form-actions form-actions--step">
+              <span class="form-hint">Step 1 of 3</span>
+              <button type="button" class="btn js-step-next">Continue ▶</button>
+            </div>
           </div>
 
-          <div class="form-actions">
-            <button type="submit" class="btn">Send Indication ▶</button>
-            <span class="form-hint">We typically reply within 2 business days.</span>
+
+          <!-- ============================================================
+               STEP 2 · Investor profile
+               ============================================================ -->
+          <div class="form-step" data-step="2" data-step-name="Investor profile">
+            <p class="form-step-intro">Helps us tailor the data room. <em>(SEC Rule 501)</em></p>
+
+            <fieldset>
+              <legend>Investor type <em class="req">*</em></legend>
+              <div class="radio-grid">
+                <label class="radio-card"><input type="radio" name="type" value="individual" /><span>Individual / HNW</span></label>
+                <label class="radio-card"><input type="radio" name="type" value="family-office" /><span>Family Office</span></label>
+                <label class="radio-card"><input type="radio" name="type" value="institutional" /><span>Institutional</span></label>
+                <label class="radio-card"><input type="radio" name="type" value="fund-of-funds" /><span>Fund of Funds</span></label>
+                <label class="radio-card"><input type="radio" name="type" value="entity" /><span>Trust / LLC / Corp</span></label>
+                <label class="radio-card"><input type="radio" name="type" value="other" /><span>Other</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Accreditation <em class="req">*</em></legend>
+              <div class="radio-stack">
+                <label class="radio-row"><input type="radio" name="accred" value="income" /><span><strong>Income.</strong> $200K+ individual or $300K+ joint, the last two years.</span></label>
+                <label class="radio-row"><input type="radio" name="accred" value="net-worth" /><span><strong>Net Worth.</strong> $1M+, excluding primary residence.</span></label>
+                <label class="radio-row"><input type="radio" name="accred" value="entity" /><span><strong>Entity.</strong> Trust / LLC / Corp with $5M+ in assets.</span></label>
+                <label class="radio-row"><input type="radio" name="accred" value="license" /><span><strong>Professional.</strong> Series 7, 65, or 82 license in good standing.</span></label>
+                <label class="radio-row"><input type="radio" name="accred" value="not-sure" /><span><strong>Not sure.</strong> Let's walk through it together.</span></label>
+                <label class="radio-row"><input type="radio" name="accred" value="not-accredited" /><span>I'm <strong>not</strong> currently accredited.</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions form-actions--step">
+              <button type="button" class="btn-link js-step-back">◀ Back</button>
+              <span class="form-hint">Step 2 of 3</span>
+              <button type="button" class="btn js-step-next">Continue ▶</button>
+            </div>
+          </div>
+
+
+          <!-- ============================================================
+               STEP 3 · Commitment & details
+               ============================================================ -->
+          <div class="form-step" data-step="3" data-step-name="Commitment">
+            <p class="form-step-intro">What you're considering. None of this is binding.</p>
+
+            <fieldset>
+              <legend>Indicative commitment <em class="req">*</em></legend>
+              <div class="radio-grid">
+                <label class="radio-card"><input type="radio" name="commit" value="25-100k" /><span>$25K – $100K</span></label>
+                <label class="radio-card"><input type="radio" name="commit" value="100-500k" /><span>$100K – $500K</span></label>
+                <label class="radio-card"><input type="radio" name="commit" value="500k-1m" /><span>$500K – $1M</span></label>
+                <label class="radio-card"><input type="radio" name="commit" value="1m-2m" /><span>$1M – $2M</span></label>
+                <label class="radio-card"><input type="radio" name="commit" value="2m-plus" /><span>$2M+</span></label>
+                <label class="radio-card"><input type="radio" name="commit" value="exploring" /><span>Still exploring</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <div class="row-2">
+                <label>
+                  <span>Timeline <em>optional</em></span>
+                  <select name="timeline">
+                    <option value="">No preference</option>
+                    <option value="now">Ready now</option>
+                    <option value="1-3">1–3 months</option>
+                    <option value="3-6">3–6 months</option>
+                    <option value="6-12">6–12 months</option>
+                    <option value="exploring">Just exploring</option>
+                  </select>
+                </label>
+                <label>
+                  <span>How did you find us? <em>optional</em></span>
+                  <select name="referral">
+                    <option value="">Choose…</option>
+                    <option>Personal introduction</option>
+                    <option>LinkedIn</option>
+                    <option>Press / podcast</option>
+                    <option>Conference / event</option>
+                    <option>Existing portfolio company</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="check-grid" style="border:none; padding:0; margin-top: 4px;">
+              <legend class="sub-legend">Interested in <em>(check any that apply)</em></legend>
+              <label class="check-pill"><input type="checkbox" name="interest" value="fund-i" /><span>Fund I</span></label>
+              <label class="check-pill"><input type="checkbox" name="interest" value="co-invest" /><span>Co-invest</span></label>
+              <label class="check-pill"><input type="checkbox" name="interest" value="advisory" /><span>Advisory role</span></label>
+              <label class="check-pill"><input type="checkbox" name="interest" value="follow" /><span>Just follow updates</span></label>
+            </fieldset>
+
+            <fieldset>
+              <label>
+                <span>Anything else? <em>optional</em></span>
+                <textarea name="notes" rows="3" placeholder="Sectors of interest, restrictions, questions…"></textarea>
+              </label>
+            </fieldset>
+
+            <div class="form-consent">
+              <label class="consent-row">
+                <input type="checkbox" name="consent" required />
+                <span>
+                  This is an <strong>indication of interest</strong>, not a binding commitment.
+                  The info above is accurate to the best of my knowledge.
+                </span>
+              </label>
+            </div>
+
+            <div class="form-actions form-actions--step">
+              <button type="button" class="btn-link js-step-back">◀ Back</button>
+              <button type="submit" class="btn">Send Indication ▶</button>
+            </div>
+            <p class="form-hint form-hint--center">We respond within 2 business days.</p>
           </div>
         </form>
 
@@ -268,23 +311,138 @@
 
 <script src="scripts/main.js"></script>
 <script>
-  document.getElementById('lpForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    if (!this.checkValidity()) { this.reportValidity(); return; }
+(function () {
+  const form = document.getElementById('lpForm');
+  if (!form) return;
 
-    // Build payload — collapse multiple "interest" checkboxes into an array
-    const fd = new FormData(this);
-    const payload = {};
+  const STORAGE_KEY = 'sbv-lp-form-v2';
+  const steps = Array.from(form.querySelectorAll('.form-step'));
+  const totalSteps = steps.length;
+  const progressFill = document.getElementById('formProgressFill');
+  const progressNum  = document.getElementById('formProgressNum');
+  const progressName = document.getElementById('formProgressName');
+
+  let current = 1;
+
+  // ----- Step navigation -----
+  function showStep(n) {
+    n = Math.max(1, Math.min(totalSteps, n));
+    current = n;
+    steps.forEach((el) => {
+      const s = parseInt(el.dataset.step, 10);
+      el.classList.toggle('is-active', s === n);
+    });
+    if (progressFill) progressFill.style.width = (n / totalSteps * 100) + '%';
+    if (progressNum)  progressNum.textContent = n;
+    if (progressName) progressName.textContent = steps[n - 1].dataset.stepName || '';
+    // Scroll the form into view, top-anchored
+    const top = form.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+    // Focus first input on the new step
+    const firstInput = steps[n - 1].querySelector('input, select, textarea');
+    if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 250);
+  }
+
+  // ----- Validate the fields visible in the current step -----
+  function validateStep(n) {
+    const stepEl = steps[n - 1];
+    const required = ['name', 'email', 'type', 'accred', 'commit', 'consent'];
+    let firstBad = null;
+    for (const fld of stepEl.querySelectorAll('input, select, textarea')) {
+      // Step 1 requires name + email
+      // Step 2 requires type + accred
+      // Step 3 requires commit + consent
+      const isReq = required.includes(fld.name) && (
+        (n === 1 && (fld.name === 'name' || fld.name === 'email')) ||
+        (n === 2 && (fld.name === 'type' || fld.name === 'accred')) ||
+        (n === 3 && (fld.name === 'commit' || fld.name === 'consent'))
+      );
+      if (!isReq) continue;
+
+      let bad = false;
+      if (fld.type === 'radio') {
+        const group = stepEl.querySelectorAll('input[name="' + fld.name + '"]');
+        bad = !Array.from(group).some((r) => r.checked);
+      } else if (fld.type === 'checkbox' && fld.name === 'consent') {
+        bad = !fld.checked;
+      } else {
+        bad = !fld.value || (fld.type === 'email' && !/^\S+@\S+\.\S+$/.test(fld.value));
+      }
+      if (bad && !firstBad) firstBad = fld;
+    }
+    if (firstBad) {
+      firstBad.focus();
+      // Native validation message if available
+      if (firstBad.reportValidity) firstBad.reportValidity();
+      return false;
+    }
+    return true;
+  }
+
+  form.querySelectorAll('.js-step-next').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (validateStep(current)) showStep(current + 1);
+    });
+  });
+  form.querySelectorAll('.js-step-back').forEach((btn) => {
+    btn.addEventListener('click', () => showStep(current - 1));
+  });
+
+  // ----- Auto-save to localStorage -----
+  function snapshot() {
+    const fd = new FormData(form);
+    const data = {};
     for (const [k, v] of fd.entries()) {
       if (k === 'interest') {
-        if (!Array.isArray(payload.interest)) payload.interest = [];
-        payload.interest.push(v);
+        if (!Array.isArray(data.interest)) data.interest = [];
+        data.interest.push(v);
       } else {
-        payload[k] = v;
+        data[k] = v;
       }
     }
+    data.consent = form.querySelector('input[name="consent"]')?.checked || false;
+    return data;
+  }
+  function saveDraft() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot())); } catch (_) {}
+  }
+  function restoreDraft() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      Object.entries(data).forEach(([k, v]) => {
+        if (k === 'interest' && Array.isArray(v)) {
+          v.forEach((val) => {
+            const cb = form.querySelector('input[name="interest"][value="' + val + '"]');
+            if (cb) cb.checked = true;
+          });
+          return;
+        }
+        if (k === 'consent') return; // never restore consent — user must re-tick
+        const fld = form.querySelector('[name="' + k + '"]');
+        if (!fld) return;
+        if (fld.type === 'radio') {
+          const r = form.querySelector('input[name="' + k + '"][value="' + v + '"]');
+          if (r) r.checked = true;
+        } else if (fld.type !== 'checkbox') {
+          fld.value = v;
+        }
+      });
+    } catch (_) {}
+  }
 
-    const submitBtn = this.querySelector('button[type="submit"]');
+  form.addEventListener('input', saveDraft);
+  form.addEventListener('change', saveDraft);
+  restoreDraft();
+
+  // ----- Submit -----
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!validateStep(3)) return;
+
+    const payload = snapshot();
+    const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) submitBtn.disabled = true;
 
     try {
@@ -293,20 +451,21 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!res.ok && res.status !== 503) {
-        // 503 = DATABASE_URL not configured yet — show success anyway so user has feedback
-        console.warn('[lp] submit returned', res.status);
-      }
+      if (!res.ok && res.status !== 503) console.warn('[lp] submit returned', res.status);
     } catch (err) {
       console.warn('[lp] submit error:', err);
     } finally {
       if (submitBtn) submitBtn.disabled = false;
     }
 
-    this.hidden = true;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+
+    form.hidden = true;
+    document.getElementById('formProgress').hidden = true;
     document.getElementById('lpSuccess').hidden = false;
     window.scrollTo({ top: document.getElementById('lpSuccess').offsetTop - 80, behavior: 'smooth' });
   });
+})();
 </script>
 </body>
 </html>

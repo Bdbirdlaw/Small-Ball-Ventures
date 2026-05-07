@@ -263,6 +263,12 @@
   flex-wrap: wrap;
   padding-top: 8px;
 }
+.form-actions--step {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(0,56,49,.18);
+  justify-content: space-between;
+}
 .form-hint {
   font-family: var(--font-mono);
   font-size: 1rem;
@@ -270,6 +276,115 @@
   opacity: .8;
   letter-spacing: .03em;
 }
+.form-hint--center {
+  width: 100%;
+  text-align: center;
+  margin: 14px 0 0;
+}
+
+/* Required-field marker (.req) and inline 'optional' tag (em without .req) */
+.invest-form label > span em {
+  font-style: normal;
+  font-size: .68rem;
+  color: var(--green-700);
+  opacity: .6;
+  letter-spacing: .04em;
+  margin-left: 6px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+.invest-form label > span em.req {
+  color: var(--rust);
+  opacity: 1;
+  font-weight: 700;
+  font-size: .9em;
+}
+.invest-form legend em.req {
+  color: var(--rust);
+  font-style: normal;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* Subtle "back" link button (used between steps) */
+.btn-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  font-family: var(--font-pixel);
+  font-size: .55rem;
+  letter-spacing: .2em;
+  color: var(--green-700);
+  text-transform: uppercase;
+  transition: color .12s ease;
+}
+.btn-link:hover { color: var(--gold-600); }
+
+/* ============================================================
+   MULTI-STEP FORM
+   ============================================================ */
+
+/* Progress bar above the form */
+.form-progress {
+  margin: 4px 0 26px;
+}
+.form-progress-track {
+  position: relative;
+  height: 6px;
+  background: rgba(0,56,49,.12);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.form-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--green-700), var(--gold-500));
+  border-radius: 99px;
+  transition: width .35s cubic-bezier(.4,.2,.2,1);
+}
+.form-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: .55rem;
+  letter-spacing: .15em;
+  color: var(--green-900);
+  text-transform: uppercase;
+}
+.form-progress-step strong { color: var(--gold-600); }
+.form-progress-name { font-weight: normal; }
+
+/* Each step is a hidden container that slides in when active */
+.form-step { display: none; animation: stepFadeIn .25s ease; }
+.form-step.is-active { display: block; }
+@keyframes stepFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-step-intro {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--green-700);
+  margin: 0 0 22px;
+  padding: 12px 14px;
+  background: rgba(0,56,49,.04);
+  border-left: 3px solid var(--gold-500);
+}
+.form-step-intro em {
+  font-style: normal;
+  font-size: .82rem;
+  color: var(--green-700);
+  opacity: .7;
+}
+
+/* In step mode, give fieldsets a bit more breathing room */
+.invest-form--steps fieldset { margin-bottom: 22px; }
+.invest-form--steps fieldset:last-of-type { margin-bottom: 8px; }
 
 /* ----- Success state ----- */
 .form-success {
