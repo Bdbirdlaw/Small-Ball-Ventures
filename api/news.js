@@ -1,6 +1,16 @@
 // CommonJS for max Vercel runtime compatibility
 const Parser = require('rss-parser');
-const Anthropic = require('@anthropic-ai/sdk').default;
+
+// Anthropic SDK is optional — if the package fails to install or load,
+// the news API still works (just falls back to round-robin ordering
+// instead of Claude re-ranking).
+let Anthropic = null;
+try {
+  const sdk = require('@anthropic-ai/sdk');
+  Anthropic = sdk.default || sdk.Anthropic || sdk;
+} catch (err) {
+  console.warn('[news] @anthropic-ai/sdk not loaded:', err && err.message);
+}
 
 const parser = new Parser({ timeout: 8000 });
 
@@ -24,9 +34,18 @@ const CANDIDATE_POOL = 30; // headlines we hand to Claude for re-ranking
 // call fails for any reason.
 // ============================================================
 
-const anthropic = process.env.ANTHROPIC_API_KEY
-  ? new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, timeout: 8000 })
+const anthropic = (Anthropic && process.env.ANTHROPIC_API_KEY)
+  ? safeNewAnthropic()
   : null;
+
+function safeNewAnthropic() {
+  try {
+    return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, timeout: 8000 });
+  } catch (err) {
+    console.warn('[news] Anthropic constructor failed:', err && err.message);
+    return null;
+  }
+}
 
 const RERANK_SYSTEM = `You curate a tech-news ticker for an audience of venture capitalists, founders, and limited partners.
 
