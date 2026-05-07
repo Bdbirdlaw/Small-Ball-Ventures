@@ -1855,7 +1855,11 @@ p { margin: 0 0 1em; }
   animation: espn-marquee 60s linear infinite;
   will-change: transform;
 }
-.espn-ticker:hover .espn-rail { animation-play-state: paused; }
+/* Only pause on devices that have a real hover. On touch devices,
+   :hover sticks after the first tap and would freeze the ticker. */
+@media (hover: hover) {
+  .espn-ticker:hover .espn-rail { animation-play-state: paused; }
+}
 
 .espn-group {
   display: flex;
@@ -1965,7 +1969,7 @@ p { margin: 0 0 1em; }
   }
   .espn-jv { font-size: .68rem; padding: 2px 6px; }
   .espn-status { font-size: .62rem; padding: 3px 6px; }
-  .espn-rail { animation-duration: 60s; }
+  .espn-rail { animation-duration: 45s; }
 }
 
 /* ============================================================
@@ -2248,7 +2252,7 @@ img, svg { max-width: 100%; height: auto; }
   .espn-item { padding: 0 12px; gap: 8px; }
   .espn-team { font-size: .6rem; }
   .espn-meta { font-size: .72rem; }
-  .espn-rail { animation-duration: 50s; }
+  .espn-rail { animation-duration: 40s; }
 
   /* Portfolio scoreboard */
   .sb-tag { font-size: .5rem; padding: 8px 0; padding-left: 16px; }
