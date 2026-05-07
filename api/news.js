@@ -38,7 +38,8 @@ module.exports = async function handler(req, res) {
     const all = settled
       .filter((r) => r.status === 'fulfilled')
       .flatMap((r) => r.value)
-      .filter((i) => i.headline && i.published);
+      .filter((i) => i.headline && i.published)
+      .filter((i) => !isPromo(i));
 
     const cutoff = Date.now() - FOUR_HOURS_MS;
     const recent = all
@@ -61,6 +62,37 @@ module.exports = async function handler(req, res) {
 
 function cleanTitle(t) {
   return t.replace(/\s+/g, ' ').replace(/\s*\|.*$/, '').trim();
+}
+
+// Filter out deal / promo / affiliate / sponsored content. RSS feeds
+// from TC / Verge / Wired / Engadget all mix these into the main feed.
+const PROMO_TITLE_RE = new RegExp(
+  '\\b(' + [
+    'deal', 'deals',
+    'sale', 'on sale',
+    'discount(?:ed)?',
+    'coupon', 'promo code', 'promotional code', 'promo',
+    'save \\$?\\d', 'save up to',
+    '\\d{1,3}%\\s*(?:off|discount)', '\\$\\d+\\s*off',
+    'best (?:buys?|gifts?|laptops?|monitors?|tvs?|deals?)',
+    'cyber monday', 'black friday', 'prime day', 'holiday deals?',
+    'gift guide', 'gift ideas?',
+    'affiliate', 'sponsored', 'partner content', 'paid post',
+    'shop now', 'buy now', 'shop the',
+    'amazon deal', 'walmart deal'
+  ].join('|') + ')\\b',
+  'i'
+);
+
+const PROMO_URL_RE =
+  /\/(deals?|sponsored|partner-content|partner|shop|coupons?|sale|promotion[s]?|advertorial|affiliate)(\/|$)/i;
+
+function isPromo(item) {
+  const title = (item.headline || '').toLowerCase();
+  const url   = (item.link || '').toLowerCase();
+  if (PROMO_TITLE_RE.test(title)) return true;
+  if (PROMO_URL_RE.test(url))     return true;
+  return false;
 }
 
 function roundRobin(items) {
