@@ -268,11 +268,41 @@
 
 <script src="scripts/main.js"></script>
 <script>
-  document.getElementById('lpForm').addEventListener('submit', function (e) {
+  document.getElementById('lpForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     if (!this.checkValidity()) { this.reportValidity(); return; }
-    var data = Object.fromEntries(new FormData(this).entries());
-    console.log('[SmallBall LP] Indication submitted:', data);
+
+    // Build payload — collapse multiple "interest" checkboxes into an array
+    const fd = new FormData(this);
+    const payload = {};
+    for (const [k, v] of fd.entries()) {
+      if (k === 'interest') {
+        if (!Array.isArray(payload.interest)) payload.interest = [];
+        payload.interest.push(v);
+      } else {
+        payload[k] = v;
+      }
+    }
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/lp-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok && res.status !== 503) {
+        // 503 = DATABASE_URL not configured yet — show success anyway so user has feedback
+        console.warn('[lp] submit returned', res.status);
+      }
+    } catch (err) {
+      console.warn('[lp] submit error:', err);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+
     this.hidden = true;
     document.getElementById('lpSuccess').hidden = false;
     window.scrollTo({ top: document.getElementById('lpSuccess').offsetTop - 80, behavior: 'smooth' });

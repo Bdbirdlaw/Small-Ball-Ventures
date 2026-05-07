@@ -84,9 +84,19 @@
     `;
   }
 
-  function submit() {
-    // No backend — log to console + advance to "HOME RUN" screen.
-    console.log('[SmallBall] Application submitted:', state);
+  async function submit() {
+    // POST to /api/apply-submit (Neon Postgres). Always advance to the
+    // HOME RUN screen, even if the backend isn't reachable, so the
+    // experience doesn't break for visitors on plain GitHub Pages.
+    try {
+      await fetch('/api/apply-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state),
+      });
+    } catch (e) {
+      console.warn('[SmallBall] apply submit error:', e);
+    }
     show(6);
   }
 
