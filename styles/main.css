@@ -6,7 +6,7 @@
 :root {
   --green-900: #001E16;
   --green-800: #002B20;
-  --green-700: #003831;   /* Oakland A's kelly green */
+  --green-700: #023B31;   /* Matches the logo PNG's bg exactly so it blends seamlessly */
   --green-600: #00513F;
   --green-500: #0B6E4F;
   --green-300: #4FA68A;
