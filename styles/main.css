@@ -1720,14 +1720,20 @@ p { margin: 0 0 1em; }
 .cite {
   display: block;
   font-family: var(--font-pixel);
-  font-size: .6rem;
-  letter-spacing: .25em;
-  margin-top: 16px;
+  font-size: .75rem;
+  letter-spacing: .22em;
+  margin-top: 22px;
   color: var(--gold-600);
   text-transform: uppercase;
   text-align: center;
+  line-height: 1.4;
 }
 .cite.on-dark { color: var(--gold-500); }
+/* On a gold section background, switch to dark green so the cite is readable */
+.section.gold .cite {
+  color: var(--green-900);
+  opacity: .92;
+}
 
 /* ============================================================
    TICKER MARQUEE (legacy, kept for fallback)
