@@ -1686,27 +1686,6 @@ p { margin: 0 0 1em; }
 }
 .page-intro h1 { color: var(--white); }
 .page-intro p { color: var(--cream); max-width: 60ch; font-size: 1.15rem; margin-left: auto; margin-right: auto; }
-.page-intro .thesis-line {
-  display: block;
-  margin: 28px auto 0;
-  max-width: 52ch;
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.28em;
-  line-height: 1.4;
-  color: var(--gold-500);
-  letter-spacing: .005em;
-}
-.page-intro .thesis-line::before {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 2px;
-  margin: 0 auto 16px;
-  background: var(--gold-500);
-  opacity: .85;
-}
 
 /* ============================================================
    QUOTE / DIAMOND DIVIDER
