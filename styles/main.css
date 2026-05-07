@@ -2136,8 +2136,11 @@ img, svg { max-width: 100%; height: auto; }
   /* Hero */
   .hero-stadium { padding: 56px 16px 64px; }
   .hero-h1 {
-    font-size: clamp(1.4rem, 5.6vw, 2rem);
-    line-height: 1.5;
+    font-size: clamp(1.3rem, 5.4vw, 1.9rem);
+    line-height: 1.18;          /* tight: pixel fonts have built-in vertical space */
+    letter-spacing: .015em;
+    margin: 0 auto 22px;
+    max-width: 18ch;            /* keeps line wrapping balanced */
     /* Disable subpixel-aliasing artifacts that turn pixel-font drop
        shadows into visible "ghost letters" on retina iOS */
     -webkit-font-smoothing: antialiased;
@@ -2145,8 +2148,11 @@ img, svg { max-width: 100%; height: auto; }
   }
   .hero-h1 .line-1,
   .hero-h1 .line-2 {
+    display: block;
     text-shadow: 0 1px 0 rgba(0,0,0,.3); /* was 3px — too chunky on mobile */
+    margin-bottom: .35em;       /* small explicit gap between the two lines */
   }
+  .hero-h1 .line-2 { margin-bottom: 0; }
   .hero-h1 .gold {
     text-shadow:
       0 1px 0 rgba(0,0,0,.35),
