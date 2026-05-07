@@ -192,7 +192,14 @@ p { margin: 0 0 1em; }
     border-bottom: 3px solid var(--gold-500);
   }
   .nav.open .nav-links a { padding: 14px; }
-  .nav-cta { display: none; }
+  /* Apply CTA stays visible on mobile (was display:none, which orphaned
+     the only path to apply.html when the burger menu was closed). Sized
+     down to fit beside the burger. */
+  .nav-cta {
+    padding: 9px 12px;
+    font-size: .55rem;
+    box-shadow: 2px 2px 0 var(--green-900);
+  }
 }
 
 /* ============================================================
@@ -2118,7 +2125,23 @@ img, svg { max-width: 100%; height: auto; }
 
   /* Hero */
   .hero-stadium { padding: 56px 16px 64px; }
-  .hero-h1 { font-size: clamp(1.4rem, 5.6vw, 2rem); line-height: 1.5; }
+  .hero-h1 {
+    font-size: clamp(1.4rem, 5.6vw, 2rem);
+    line-height: 1.5;
+    /* Disable subpixel-aliasing artifacts that turn pixel-font drop
+       shadows into visible "ghost letters" on retina iOS */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+  }
+  .hero-h1 .line-1,
+  .hero-h1 .line-2 {
+    text-shadow: 0 1px 0 rgba(0,0,0,.3); /* was 3px — too chunky on mobile */
+  }
+  .hero-h1 .gold {
+    text-shadow:
+      0 1px 0 rgba(0,0,0,.35),
+      0 0 12px rgba(239,178,30,.45);
+  }
   .hero-lead { font-size: .95rem; line-height: 1.55; }
   .on-air { font-size: .5rem; padding: 6px 12px; letter-spacing: .2em; }
 
