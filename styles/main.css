@@ -1946,16 +1946,26 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 700px) {
-  .espn-ticker { height: 52px; }
-  .espn-brand { min-width: 88px; padding: 0 12px; }
-  .espn-brand-logo { font-size: 1.2rem; }
-  .espn-brand-sub { font-size: .48rem; }
-  .espn-item { padding: 0 14px; gap: 8px; }
-  .espn-meta { display: none; }
-  .espn-team { font-size: .82rem; }
+  .espn-ticker { height: 50px; }
+  .espn-brand { min-width: 84px; padding: 0 10px; }
+  .espn-brand-logo { font-size: 1rem; letter-spacing: .06em; }
+  .espn-brand-sub { font-size: .44rem; letter-spacing: .15em; }
+  .espn-item { padding: 0 14px; gap: 10px; }
+  /* Keep .espn-meta (the headline) visible — was previously hidden,
+     which left mobile users seeing only source names with no news. */
+  .espn-team {
+    font-size: .68rem;
+    flex-shrink: 0;
+    color: rgba(0, 30, 22, .65);   /* muted dark-green so headline reads as primary */
+  }
+  .espn-meta {
+    font-size: .8rem;
+    color: var(--green-900);
+    font-weight: 600;
+  }
   .espn-jv { font-size: .68rem; padding: 2px 6px; }
   .espn-status { font-size: .62rem; padding: 3px 6px; }
-  .espn-rail { animation-duration: 45s; }
+  .espn-rail { animation-duration: 60s; }
 }
 
 /* ============================================================
@@ -2230,14 +2240,14 @@ img, svg { max-width: 100%; height: auto; }
   .page-intro p { font-size: 1rem; }
   .eyebrow { font-size: .55rem; letter-spacing: .2em; }
 
-  /* ESPN ticker — readability */
+  /* ESPN ticker — narrow phones */
   .espn-ticker { height: 46px; }
-  .espn-brand { min-width: 78px; padding: 0 10px; }
-  .espn-brand-logo { font-size: 1rem; }
-  .espn-brand-sub { font-size: .42rem; letter-spacing: .15em; }
+  .espn-brand { min-width: 74px; padding: 0 8px; }
+  .espn-brand-logo { font-size: .9rem; }
+  .espn-brand-sub { font-size: .4rem; letter-spacing: .12em; }
   .espn-item { padding: 0 12px; gap: 8px; }
-  .espn-team { font-size: .72rem; }
-  .espn-meta { font-size: .76rem; }
+  .espn-team { font-size: .6rem; }
+  .espn-meta { font-size: .72rem; }
   .espn-rail { animation-duration: 50s; }
 
   /* Portfolio scoreboard */
