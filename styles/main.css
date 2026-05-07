@@ -173,6 +173,13 @@ p { margin: 0 0 1em; }
 .nav-cta:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--green-900); color: var(--green-900); }
 
 .nav-burger { display: none; }
+
+/* The Apply link in .nav-links is mobile-only — it shows up inside the
+   open burger menu so phone users have a direct dropdown link to apply.
+   On desktop the top-right .nav-cta button covers that role, so we
+   hide this duplicate. */
+.nav-link-mobile-only { display: none; }
+
 @media (max-width: 760px) {
   .nav-links { display: none; }
   .nav-burger {
@@ -192,14 +199,17 @@ p { margin: 0 0 1em; }
     border-bottom: 3px solid var(--gold-500);
   }
   .nav.open .nav-links a { padding: 14px; }
-  /* Apply CTA stays visible on mobile (was display:none, which orphaned
-     the only path to apply.html when the burger menu was closed). Sized
-     down to fit beside the burger. */
-  .nav-cta {
-    padding: 9px 12px;
-    font-size: .55rem;
-    box-shadow: 2px 2px 0 var(--green-900);
+  /* In the open mobile dropdown, the Apply link gets a gold pill so
+     it reads as the primary action of the menu */
+  .nav.open .nav-link-mobile-only {
+    display: block;
+    background: var(--gold-500);
+    color: var(--green-900) !important;
+    margin-top: 6px;
+    border: 2px solid var(--gold-500);
   }
+  /* Hide the top-right .nav-cta on mobile — the dropdown link replaces it */
+  .nav-cta { display: none; }
 }
 
 /* ============================================================
