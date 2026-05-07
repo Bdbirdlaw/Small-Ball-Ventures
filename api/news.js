@@ -1,5 +1,6 @@
 // CommonJS for max Vercel runtime compatibility
 const Parser = require('rss-parser');
+const Anthropic = require('@anthropic-ai/sdk').default;
 
 const parser = new Parser({ timeout: 8000 });
 
@@ -14,6 +15,86 @@ const SOURCES = [
 
 const FOUR_HOURS_MS = 4 * 60 * 60 * 1000;
 const MAX_ITEMS = 12;
+const CANDIDATE_POOL = 30; // headlines we hand to Claude for re-ranking
+
+// ============================================================
+// Claude re-ranker — sends candidates to Opus 4.7 for editorial
+// scoring. Cached system prompt (~$0.003/call after first hit).
+// Falls back gracefully if ANTHROPIC_API_KEY isn't set or the
+// call fails for any reason.
+// ============================================================
+
+const anthropic = process.env.ANTHROPIC_API_KEY
+  ? new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, timeout: 8000 })
+  : null;
+
+const RERANK_SYSTEM = `You curate a tech-news ticker for an audience of venture capitalists, founders, and limited partners.
+
+From the numbered list of headlines, return ONLY the indices of the items that are genuinely relevant for this audience.
+
+KEEP:
+- Venture capital, M&A, IPOs, fundraises, secondary tenders
+- Big tech earnings, strategy, antitrust, regulation
+- AI, fintech, climate tech, defense tech, biotech with real business implications
+- Major hires, leadership changes, board moves
+- Macro market signals (rate moves, sector rotations) only when tech-related
+
+DROP:
+- Consumer product reviews (gadgets, watches, gaming hardware, headphones)
+- Lifestyle, entertainment, sports, culture
+- Promotional / deal / sponsored / "best of" roundups
+- Generic gadget launches without business angle
+- How-to / explainer content
+- Coverage of vlogs, social-media drama, influencer news
+
+Return ONLY a comma-separated list of the kept indices, ranked best-first. Maximum 12. No prose, no preamble, no trailing punctuation. Example: 3,1,7,12,4,8,2,15,9`;
+
+async function rerankWithClaude(items) {
+  if (!anthropic || items.length === 0) return null;
+
+  const candidates = items.slice(0, CANDIDATE_POOL);
+  const numbered = candidates
+    .map((it, i) => `${i + 1}. [${it.source}] ${it.headline}`)
+    .join('\n');
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-opus-4-7',
+      max_tokens: 200,
+      output_config: { effort: 'low' },
+      system: [
+        { type: 'text', text: RERANK_SYSTEM, cache_control: { type: 'ephemeral' } },
+      ],
+      messages: [{ role: 'user', content: numbered }],
+    });
+
+    let text = '';
+    for (const block of response.content) {
+      if (block && block.type === 'text') text += block.text;
+    }
+
+    const seen = new Set();
+    const indices = text
+      .split(/[,\s]+/)
+      .map((s) => parseInt(s, 10) - 1)
+      .filter((i) => Number.isInteger(i) && i >= 0 && i < candidates.length)
+      .filter((i) => {
+        if (seen.has(i)) return false;
+        seen.add(i);
+        return true;
+      });
+
+    if (indices.length === 0) return null;
+    return indices.map((i) => candidates[i]);
+  } catch (err) {
+    console.warn('[news] Claude rerank failed:', (err && err.message) || err);
+    return null;
+  }
+}
+
+// ============================================================
+// Handler
+// ============================================================
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -47,11 +128,18 @@ module.exports = async function handler(req, res) {
       .filter((i) => i._t > cutoff)
       .sort((a, b) => b._t - a._t);
 
-    const balanced = roundRobin(recent).slice(0, MAX_ITEMS);
+    // Cap candidate pool, then ask Claude to rerank.
+    // If Claude is unavailable or fails, fall back to round-robin
+    // across sources so the ticker still has variety.
+    const candidates = recent.slice(0, CANDIDATE_POOL);
+    const reranked = await rerankWithClaude(candidates);
+    const ordered = reranked || roundRobin(candidates);
+    const balanced = ordered.slice(0, MAX_ITEMS);
 
     res.status(200).json({
       updated: new Date().toISOString(),
       window_hours: 4,
+      reranked: !!reranked,
       count: balanced.length,
       items: balanced.map(({ _t, ...rest }) => rest),
     });
@@ -60,12 +148,14 @@ module.exports = async function handler(req, res) {
   }
 };
 
+// ============================================================
+// Helpers
+// ============================================================
+
 function cleanTitle(t) {
   return t.replace(/\s+/g, ' ').replace(/\s*\|.*$/, '').trim();
 }
 
-// Filter out deal / promo / affiliate / sponsored content. RSS feeds
-// from TC / Verge / Wired / Engadget all mix these into the main feed.
 const PROMO_TITLE_RE = new RegExp(
   '\\b(' + [
     'deal', 'deals',
@@ -79,7 +169,7 @@ const PROMO_TITLE_RE = new RegExp(
     'gift guide', 'gift ideas?',
     'affiliate', 'sponsored', 'partner content', 'paid post',
     'shop now', 'buy now', 'shop the',
-    'amazon deal', 'walmart deal'
+    'amazon deal', 'walmart deal',
   ].join('|') + ')\\b',
   'i'
 );
