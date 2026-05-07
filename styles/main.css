@@ -2076,3 +2076,172 @@ p { margin: 0 0 1em; }
   font-size: 1.15rem;
 }
 .callout strong { font-family: var(--font-pixel); font-size: .9rem; letter-spacing: .1em; display: block; margin-bottom: 8px; }
+
+/* ============================================================
+   MOBILE OPTIMIZATIONS
+   Consolidated rules tuned for phone viewports.
+   ============================================================ */
+
+/* iOS / horizontal-overflow guards */
+html, body { overflow-x: hidden; }
+img, svg { max-width: 100%; height: auto; }
+
+/* Tablet + below */
+@media (max-width: 760px) {
+  .container { padding: 0 16px; }
+  .section { padding: clamp(48px, 8vw, 96px) 0; }
+
+  /* Cards a little tighter */
+  .card { padding: 22px; box-shadow: 4px 4px 0 var(--green-700); }
+  .card.dark { box-shadow: 4px 4px 0 var(--green-900); }
+
+  /* Pull quotes scale down */
+  .pull-quote { font-size: clamp(1.3rem, 5vw, 2rem); }
+
+  /* Diamond dividers tighter */
+  .diamond-divider { gap: 10px; }
+  .diamond-divider span { font-size: .55rem; letter-spacing: .18em; }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  /* Nav */
+  .nav-inner { padding: 8px 16px; gap: 12px; }
+  .nav-burger { width: 44px; height: 44px; font-size: 1rem; }
+  .nav.open .nav-links a { padding: 16px; font-size: .65rem; }
+
+  /* Hero */
+  .hero-stadium { padding: 56px 16px 64px; }
+  .hero-h1 { font-size: clamp(1.4rem, 5.6vw, 2rem); line-height: 1.5; }
+  .hero-lead { font-size: .95rem; line-height: 1.55; }
+  .on-air { font-size: .5rem; padding: 6px 12px; letter-spacing: .2em; }
+
+  /* Hero CTAs full-width and stacked */
+  .hero-stadium .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-stadium .hero-cta-row .btn { text-align: center; width: 100%; }
+
+  /* Mini scoreboard cells */
+  .mb-cell { padding: 14px 12px; min-height: 56px; gap: 8px; }
+  .mb-k { font-size: .5rem; letter-spacing: .18em; }
+  .mb-v { font-size: 1.1rem; }
+
+  /* Buttons larger touch target */
+  .btn { padding: 14px 20px; font-size: .65rem; box-shadow: 4px 4px 0 var(--green-900); }
+  .btn:hover { box-shadow: 5px 5px 0 var(--green-900); }
+  .btn.ghost { box-shadow: 4px 4px 0 var(--gold-500); }
+  .btn.ghost:hover { box-shadow: 5px 5px 0 var(--gold-500); }
+
+  /* AI-Era / OBP section */
+  .formula-eyebrow { font-size: .5rem; padding: 5px 10px; letter-spacing: .2em; }
+  .formula-h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+  .formula-lead { font-size: .95rem; }
+  .obp-term { padding: 16px 12px; }
+  .obp-term-label { font-size: 1.25rem; }
+  .obp-term-sub { font-size: .85rem; }
+
+  /* OBP result on phone */
+  .obp-result { padding: 16px 12px; flex: 0 0 auto; min-width: 160px; max-width: 180px; }
+  .obp-result .obp-result-label { font-size: 1.7rem; }
+
+  /* VS comparison */
+  .vs-col { padding: 22px; }
+  .vs-col h3 { font-size: .7rem; letter-spacing: .12em; }
+  .vs-col li { font-size: .95rem; padding: 8px 0 8px 26px; }
+
+  /* About scoreboard / Franchise Card */
+  .scoreboard { padding: 18px; box-shadow: 5px 5px 0 var(--green-900); }
+  .score-row { padding: 5px 0; }
+  .score-label { font-size: 1.05rem; }
+
+  /* Player cards */
+  .player { box-shadow: 4px 4px 0 var(--green-700); }
+  .player-img { height: 200px; }
+  .player-body { padding: 16px; }
+  .player-body h3 { font-size: 1.25rem; }
+  .player-body p { font-size: .92rem; }
+  .pos { font-size: .5rem !important; letter-spacing: .15em; }
+
+  /* Team tier */
+  .team-tier { margin-top: 36px; }
+  .team-tier-label { font-size: .55rem; letter-spacing: .2em; padding-bottom: 10px; margin-bottom: 20px; }
+
+  /* Page intro */
+  .page-intro { padding: 48px 0 36px; }
+  .page-intro h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); line-height: 1.1; }
+  .page-intro p { font-size: 1rem; }
+  .eyebrow { font-size: .55rem; letter-spacing: .2em; }
+
+  /* ESPN ticker — readability */
+  .espn-ticker { height: 46px; }
+  .espn-brand { min-width: 78px; padding: 0 10px; }
+  .espn-brand-logo { font-size: 1rem; }
+  .espn-brand-sub { font-size: .42rem; letter-spacing: .15em; }
+  .espn-item { padding: 0 12px; gap: 8px; }
+  .espn-team { font-size: .72rem; }
+  .espn-meta { font-size: .76rem; }
+  .espn-rail { animation-duration: 50s; }
+
+  /* Portfolio scoreboard */
+  .sb-tag { font-size: .5rem; padding: 8px 0; padding-left: 16px; }
+  .sb-team { padding: 12px 16px; gap: 12px; }
+  .sb-tile { width: 38px; height: 38px; font-size: 1rem; }
+  .sb-info h3 { font-size: 1.1rem; }
+  .sb-sector { font-size: .82rem; }
+  .sb-stat { padding: 10px 12px; }
+  .sb-stat .k { font-size: .45rem; }
+  .sb-stat .v { font-size: .85rem; }
+  .sb-status { padding: 10px 0; font-size: .65rem; }
+
+  /* Open spots */
+  .sb-open { padding: 18px 12px; }
+  .sb-open-num { font-size: 1rem; }
+  .sb-open-label { font-size: .72rem; }
+
+  /* Invest form */
+  .invest-form-card { padding: 24px 18px; box-shadow: 5px 5px 0 var(--green-900); }
+  .invest-h2 { font-size: 1.6rem; }
+  .invest-h2-sub { font-size: .95rem; }
+  .invest-form legend { font-size: .52rem; padding: 5px 8px; }
+  .invest-form input,
+  .invest-form select,
+  .invest-form textarea { font-size: 1rem; padding: 14px 12px; } /* 16px+ stops iOS auto-zoom on focus */
+  .radio-card { padding: 14px 10px; font-size: .9rem; }
+  .radio-row { padding: 12px 12px; font-size: .9rem; }
+  .check-pill { padding: 10px 12px; font-size: .85rem; }
+  .form-actions .btn { width: 100%; }
+  .invest-disclosures { padding: 22px 18px; font-size: .84rem; }
+
+  /* Footer (already stacks at 820px, just minor polish) */
+  .footer { padding: 18px 0; }
+  .footer-mini-logo img { height: 30px; }
+  .footer-mini-links { gap: 14px; }
+  .footer-mini-links a { font-size: .5rem; letter-spacing: .15em; }
+  .footer-mini-copy { font-size: .78rem; }
+
+  /* CTA section quote sizing */
+  .pull-quote { font-size: clamp(1.4rem, 6.5vw, 2rem); line-height: 1.2; }
+  .cite { font-size: .55rem; letter-spacing: .2em; }
+}
+
+/* Tiny phones (≤380px): one more pass of tightening */
+@media (max-width: 380px) {
+  .hero-h1 { font-size: 1.4rem; }
+  .nav-cta { padding: 9px 12px; font-size: .55rem; }
+  .nav-burger { width: 40px; height: 40px; }
+  .player-img { height: 180px; }
+}
+
+/* Tap state — gives buttons obvious touch feedback when :hover doesn't fire */
+@media (hover: none) {
+  .btn:active,
+  .nav-cta:active { transform: translate(2px, 2px); }
+  .card:active { transform: translate(0, 0); }
+}
