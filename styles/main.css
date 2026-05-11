@@ -1904,6 +1904,7 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
   letter-spacing: .04em;
   color: var(--green-900);
+  white-space: nowrap;
 }
 .espn-meta {
   font-family: 'Inter', sans-serif;
@@ -1911,6 +1912,7 @@ p { margin: 0 0 1em; }
   font-size: .82rem;
   color: rgba(0,30,22,.7);
   letter-spacing: .01em;
+  white-space: nowrap;
 }
 .espn-jv {
   font-family: 'Inter', sans-serif;
